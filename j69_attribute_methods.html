@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Attribute Methods</title>
+</head>
+<body>
+    <div class="hey" id="first">
+        Hey i am first container
+    </div>
+    <script>
+        let container=document.getElementById('first');
+
+        // 1 -> hasAttribute(name) : check given attribute is present or not in the element and return boolean(true/false)
+        console.log("Is div contain style attribute : ",container.hasAttribute('style'));
+        console.log("Is div contain class attribute : ",container.hasAttribute('class'));
+
+        // 2 -> getAttribute(name) : get given attribute value from an element in string from(if attribute not present then give null)
+        console.log("div element class attribute value is : ",container.getAttribute('class'));
+        console.log("div element style attribute value is : ",container.getAttribute('style'));
+
+        // 3 -> setAttribute(name,value) : set a new attribute with its value(if attribute already exists then override it.)
+        container.setAttribute('class','hello');
+        console.log("after setAttribute('class','hello'), div element class attribute value is : ",container.getAttribute('class'));
+        container.setAttribute('style','color:red;');
+        // now style attribute add on element
+
+        // 4 -> element.attribute : return collection of all attribute in form of NamedNodeMap
+        console.log("div has those attributes : ",container.attributes);
+
+        // 5 -> removeAttribute(name) : remove attribute from element
+        container.removeAttribute('style');
+        console.log("Now div has those attributes : ",container.attributes);
+    </script>
+    </body>
+</html>

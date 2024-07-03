@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Callback Function p2</title>
+</head>
+<body>
+    <p class="container my-4">Bootstrap</p>
+    <p><i class="fa fa-user"></i></p>
+    <script>   
+        // wrong path
+        const fontawesome_css=`./addons/afontawesome/css/all.css`
+        const fontawesome_js=`./addons/afontawesome/js/all.js`
+
+        function fontawesome(error,src){
+            console.log("Fontawesome package");
+            if(error){
+                console.log(error);
+                return
+            }
+            console.log("Src loaded now you use this.");
+        }
+
+        // call back function 
+        function loadScript(css_src,js_src,callback){
+            // there callback is just a name callback function is a concept that say i pass a function as an argument
+            var script=document.createElement('script')
+            var style=document.createElement('link')
+            style.href=css_src
+            style.rel="stylesheet"
+            script.src=js_src
+
+            script.onload=function(){
+                console.log("script src : "+js_src);
+                callback(null,js_src)
+            }
+            script.onerror=function(){
+                console.log("Error loading with src : "+js_src);
+                callback(new Error("Src get some error"),js_src)
+            }
+
+            // onload work when resource will be loaded successfully and use when we perform an action after it loaded
+            script.onload=function(){
+                console.log("script src : "+css_src);
+                callback(null,css_src)
+            }
+            script.onerror=function(){
+                console.log("Error loading with src : "+css_src);
+                callback(new Error("Src get some error"),css_src)
+            }
+
+            document.body.appendChild(script)
+            document.head.appendChild(style)
+        }
+
+        loadScript(fontawesome_css,fontawesome_js,fontawesome)
+
+    </script>
+</body>
+</html>

@@ -1,0 +1,24 @@
+{
+    "student":[
+        {
+            "roll_no":101,
+            "name":"vishal",
+            "class":"6th"
+        },
+        {
+            "roll_no":102,
+            "name":"dev",
+            "class":"7th"
+        },
+        {
+            "roll_no":103,
+            "name":"manish",
+            "class":"8th"
+        },
+        {
+            "roll_no":104,
+            "name":"krishna",
+            "class":"9th"
+        }
+    ]
+}

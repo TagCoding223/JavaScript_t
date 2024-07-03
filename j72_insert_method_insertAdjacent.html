@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>insertAdjacent Method with Html/Text/Elements</title>
+</head>
+<body>
+    <div id="first"><strong style="display: block; margin: 20px;">first div</strong></div>
+    <script>
+        let first=document.getElementById('first');
+
+        // positions of insertion using insertAdjacent method
+        // 1 -> beforebegin : Insert HTMl immediality before element
+        // 2 -> afterbegin : Insert into element at the beginning
+        // 3 -> beforeend : Insert into element at the end
+        // 4 -> afterend : Insert HTML immediality after element
+
+        // insertAdjacent methods
+        // 1 -> insertAdjacentHTML(position: InsertPosition, text: string): return -> void : Insert html ,but need html as a string
+        first.insertAdjacentHTML("beforebegin",'<div style="background:red;">beforebegin html insertion using insertAdjacentHTML</div>');
+        
+        first.insertAdjacentHTML("afterbegin",'<div style="background:yellow;">afterbegin html insertion using insertAdjacentHTML</div>');
+
+        first.insertAdjacentHTML("beforeend",'<div style="background:green;">beforeend html insertion using insertAdjacentHTML</div>');
+
+        first.insertAdjacentHTML("afterend",'<div style="background:orange;">afterend html insertion using insertAdjacentHTML</div>');
+
+        // 2 -> insertAdjacentText(where: InsertPosition, data: string): return -> void : insert text 
+
+        first.insertAdjacentText("beforebegin",'<div style="background:red;">beforebegin text insertion using insertAdjacentTEXT</div>');
+
+        first.insertAdjacentText("afterbegin",'<div style="background:yellow;">afterbegin Text insertion using insertAdjacentText</div>');
+
+        first.insertAdjacentText("beforeend",'<div style="background:green;">beforeend Text insertion using insertAdjacentText</div>');
+
+        first.insertAdjacentText("afterend",'<div style="background:orange;">afterend Text insertion using insertAdjacentText</div>');
+
+        // 3 -> insertAdjacentElementinsertAdjacentElement(where: InsertPosition, element: Element): Element | null : insert Element
+        let p1=document.createElement('p');
+        p1.innerHTML='<i style="background:pink;">I am element insert at beforebegin</i>';
+        let p2=document.createElement('p');
+        p2.innerHTML='<i style="background:pink;">I am element insert at afterbegin</i>';
+        let p3=document.createElement('p');
+        p3.innerHTML='<i style="background:pink;">I am element insert at beforeend</i>';
+        let p4=document.createElement('p');
+        p4.innerHTML='<i style="background:pink;">I am element insert at afterend</i>';
+        
+        first.insertAdjacentElement("beforebegin",p1);
+        first.insertAdjacentElement("afterbegin",p2);
+        first.insertAdjacentElement("beforeend",p3);
+        first.insertAdjacentElement("afterend",p4);
+
+        // remove(): remove a node/element but exist in source code(remove inside inspect element and web view) return : void -> remove node when JS completely loaded
+        first.childNodes[3].remove();
+    </script>
+</body>
+</html>

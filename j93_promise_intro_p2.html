@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Promise intro P2</title>
+</head>
+<body>
+    <script>
+        // Promise execute statement in background and when it finish its execution then notify us with the help of .then() and .catch() method.
+        let p1=new Promise((accept,deny)=>{
+            console.log("Promise 1 is panding");
+            setTimeout(() => {
+                console.log("Now, promise 1 are fullfilled.");
+                accept(true) // try to commant it
+                console.log("Promise 1 status : ",p1);
+                console.log("Now, promise 1 are fullfilled.");
+                deny(new Error("Promise 1 are deny by system."))
+                console.log("Promise 1 status : ",p1);
+            }, 3000);
+            // only one execute between accept and deny
+            // you cannot do like that first accept order and after cancel it.
+        })
+        
+        let p2=new Promise((accept,deny)=>{
+            console.log("Promise 2 is panding");
+            setTimeout(() => {
+                console.log("Now, Promise 2 are fullfilled.");
+                deny(new Error("Promise 2 are deny by system.")) // at console we see an error on this line because we cannot use try catch with error
+                console.log("Promise 2 status : ",p2);
+            }, 5000);
+        })
+
+        console.log("Promise 1 : ",p1,"\nPromise 2 : ",p2);
+
+    </script>
+</body>
+</html>

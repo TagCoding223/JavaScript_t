@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fetch data from json file</title>
+</head>
+<body>
+    <script>
+
+        setTimeout(async function(){
+            let url="./data.json";
+            console.log(await fetchContent(url));
+        },3000)
+
+        const fetchContent = async(url)=>{
+            con=await fetch(url)
+            let a=await con.json();
+            return a;
+        }
+
+    </script>
+</body>
+</html>

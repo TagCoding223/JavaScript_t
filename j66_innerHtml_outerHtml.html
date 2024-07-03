@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>innerHTML and outerHTML</title>
+</head>
+<body>
+    <span id="first">My span is <b>bold</b>.</span>
+    <script>
+        let first=document.getElementById('first');
+        console.log(first);
+
+        // retrive innerHtml
+        console.log("retrive innerHtml of first : ",first.innerHTML);
+
+        // set innerHtml
+        first.innerHTML="<i>now i am italic.</i>";
+        // it is vaild for only element nodes.
+        // the innerhtml give us inside tag elements also as a string(The innerHtml property allows to get the html inside the element as a string)
+
+        // retrive outerHTML
+        console.log("retrive outerHtml of first : ",first.outerHTML);
+
+        // set outerHTMl
+        first.outerHTML="<b>now i am bold</b>";
+        // The outerHTML property contains the full HTML innerHTML + the element self.
+        // set outerHTML completely change the element on inspect elements and web view but it exist on source code, first not exists on inspect element but avaliable in source code thats way we also get elements after set OuterHTMl(if we override complete element also).
+        console.log(first);
+    </script>
+</body>
+</html>

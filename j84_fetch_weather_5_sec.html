@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fetch weather after an interval</title>
+</head>
+<body>
+    <script>
+        setInterval(async function(){
+            let url="https://jsonplaceholder.typicode.com/todos/1";
+            let output=await fetchContent(url)
+            console.log(output);
+            document.write(output)
+        },3000)
+        const fetchContent=async(url)=>{
+            con=await fetch(url)
+            let a = await con.json()
+            return a
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Snake , Water and Gun</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body{
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            background: linear-gradient(#666 53%,#581f1f 30%);
+        }
+        .container{
+            margin: 20px;
+            text-align: center;
+        }
+        h1{
+            margin: 20px;
+            color: #fff;
+        }
+        button{
+            width: 60px;
+            height: 30px;
+            margin: 10px 10px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Choose any One!!!</h1>
+        <button onclick="userChoose(this.value)" value="snake">Snake</button>
+        <button onclick="userChoose(this.value)" value="water">Water</button>
+        <button onclick="userChoose(this.value)" value="gun">Gun</button>
+    </div>
+    <script>
+        let userChoose_val;
+        let random_num;
+        let computerChoose_val;
+        function userChoose(userOption){
+            userChoose_val=userOption;
+            // console.log(userChoose_val);
+            computerPlayer();
+        }
+        computerPlayer=()=>{
+            random_num=Math.floor(Math.random()*101);
+            if(random_num>=0 && random_num<=35){
+                computerChoose_val="snake";
+            }else if(random_num>=36 && random_num<=70){
+                computerChoose_val="water";
+            }else if(random_num>=71 && random_num<=100){
+                computerChoose_val="gun";
+            }else{
+                computerChoose_val='';
+            }
+            result();
+        }
+        result=()=>{
+            if(userChoose_val==computerChoose_val){
+                alert(`Game is Draw!\nuser choose : ${userChoose_val}\nand computer choose : ${computerChoose_val}`);
+            }
+            else if(userChoose_val=="snake" && computerChoose_val=="water"){
+                alert(`You're Won!\nuser choose : ${userChoose_val}\nand computer choose : ${computerChoose_val}`);
+            }
+            else if(userChoose_val=="snake" && computerChoose_val=="gun"){
+                alert(`You loss this game , Computer Win!\nuser choose : ${userChoose_val}\nand computer choose :  ${computerChoose_val}`);
+            }
+            else if(userChoose_val=="water" && computerChoose_val=="snake"){
+                alert(`You loss this game , Computer Win!\nuser choose : ${userChoose_val}\nand computer choose :  ${computerChoose_val}`);
+            }
+            else if(userChoose_val=="water" && computerChoose_val=="gun"){
+                alert(`You're Won!\nuser choose : ${userChoose_val}\nand computer choose :  ${computerChoose_val}`);
+            }
+            else if(userChoose_val=="gun" && computerChoose_val=="snake"){
+                alert(`You're Won!\nuser choose : ${userChoose_val}\nand computer choose : ${computerChoose_val}`);
+            }
+            else if(userChoose_val=="gun" && computerChoose_val=="water"){
+                alert(`You loss this game , Computer Win!\nuser choose : ${userChoose_val}\nand computer choose :  ${computerChoose_val}`);
+            }
+            else{
+                alert(`Something is wrong\nuser choose : ${userChoose_val}\nand computer choose : ${computerChoose_val}`);
+            }
+        }
+    </script>
+</body>
+</html>

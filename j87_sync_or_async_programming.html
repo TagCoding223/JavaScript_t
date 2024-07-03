@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sync and Async programming concept</title>
+</head>
+<body>
+    <script>
+        // Syncronous programming (run statements one by one)
+        let a=prompt("Enter your name : ")
+        let b=Number.parseInt(prompt("Enter your age : "))
+        // start and finish one by one
+
+        // Asyncronous rogramming (throw in background and fetch/execute late example setInterval/setTimeout)
+        console.log("Start");
+        setTimeout(()=>{
+            console.log("Hey!!!");
+        },3000)
+
+        // below code run infinte time
+        // setInterval(()=>{
+        //     console.log("Hello!!!");
+        // }) 
+
+        setInterval(()=>{
+            console.log("Hello!!!");
+        },5000)
+        // it first interval it execute after 2s from execution of setTimeout()
+
+        console.log("End");
+        // start and finish randomly
+
+        // In asyncronos programming statement will be run when its demanded resources are full filled.
+
+    </script>
+</body>
+</html>

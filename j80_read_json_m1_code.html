@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fetch data from json file</title>
+</head>
+<body>
+    <script>
+        // This code work with help of server
+        function fetchJSONDATA(){
+            fetch("./data.json").then((res)=>{
+                if(!res.ok){
+                    throw new Error(`HTTP error! Status: ${res.status}`)
+                }
+                return res.json()
+            }).then((data)=>console.log(data)).catch((error)=>console.error("Unable to fetch data:",error))
+        }
+        fetchJSONDATA()
+    </script>
+</body>
+</html>

@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hidden property</title>
+</head>
+<body>
+    <span id="hi">I am <b>Visible</b>.</span>
+    <hr>
+    <br>
+    <button id="btn" type="button" onclick="visi()">hide</button>
+    <script>
+        let hi=document.getElementById('hi');
+        let btn=document.getElementById('btn');
+        const visi=()=>{
+            console.log("hi.hidden = ",hi.hidden=(hi.hidden==false)?true:false);
+            btn.innerText=(btn.innerText=="hide")?"show":"hide";
+        }
+    </script>
+</body>
+</html>

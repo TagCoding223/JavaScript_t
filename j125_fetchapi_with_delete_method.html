@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fetchapi with delete method</title>
+</head>
+<body>
+    
+    <script>
+        let p=fetch('http://localhost:3000/news',{
+        // let p=fetch('https://vapi-uxd9.onrender.com/news',{
+            method:'DELETE',
+            body:JSON.stringify({
+                id:17
+            }),
+            headers:{
+                'Content-type':'application/json'
+            }
+        })
+        p.then((response)=>{
+            console.log(`Response : ${response}`);
+            console.log(`Response status : ${response.status}`);
+            console.log(`Response ok : ${response.ok}`);
+            return response.text()
+        }).then((value)=>{
+            console.log(value);
+        })
+    </script>
+</body>
+</html>

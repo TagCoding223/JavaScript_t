@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dom Intro</title>
+    <script>
+        // if script written before body tag than body return null in js.
+        console.log(document.body);
+    </script>
+</head>
+
+<body>
+    <div class="container">
+        <em>
+            <h1>Dom intro</h1>
+            <div class="container">
+                <p>hello Guys</p>
+            </div>
+            </span><!-- Auto Correction : when start a tag and use another closing tag then browser automatic correct end tag. -->
+            <!-- if you use table tag and not use tbody inside it then browser automatic add this tag -->
+            <table>
+                <tr>
+                    <td>name</td>
+                    <td>class</td>
+                    <td>age</td>
+                    <td>address</td>
+                </tr>
+            </table>
+    </div>
+    <script>
+        console.log(document.getElementsByClassName('container'));
+        // return a html collection they has 2 element means its length is 2
+        console.log(document.getElementsByClassName('container')[0]);
+        // give first element they has container class
+        console.log(document.getElementsByClassName('container')[1]);
+        // give second element they has container class
+
+        console.log(document.body);// give html body
+        // console.log(window.body); window works with js properties and document works with html
+        console.log(document.head);// give html head
+
+        /*
+            DOM Tree
+                document -> html -> head->(meta,link,title,etc.)
+                              |- -> body -> parent -> child1->child,child2
+                                         -> parent -> child 
+                
+                
+            we have three main node in the Dom tree
+            1 -> Text Node -> h1..h6,pre,p,etc.(those tag they store text inside him)
+            2 -> Element Node -> Each tag in html
+            3 -> Comment Node -> comments
+
+            -> A text node is always a leaf of the tree , means text node not store any other node(tag) , a text node is a end of the tree
+        */
+        let title = document.title;
+        console.log("Previous title is : ", title, typeof title);
+        document.title = "new title";
+
+        // $0 in browser elements window show when we click on any line , then after if we press '$0' and press enter then console display your selected line and $1 display previous line
+    </script>
+</body>
+
+</html>

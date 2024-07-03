@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>await in js</title>
+</head>
+<body>
+    <script>
+        async function assignA(){
+            let a=new Promise((reslove,reject)=>{
+                setTimeout(() => {
+                    reslove(4)
+                }, 6000);
+            })
+            console.log("Fetching value of a , please wait...");
+            let x= await a
+            console.log("Fetched value of a is : ",x);
+        }
+        async function assignB(){
+            let a=new Promise((reslove,reject)=>{
+                setTimeout(() => {
+                    reslove(6)
+                }, 4000);
+            })
+            console.log("Fetching value of b , please wait...");
+            return await a
+            // console.log("Fetched value of b is : ",a);
+        }
+
+        // let a= await assignA()
+        // await keyword use inside async function not be outside
+        // async function run pallerl(multiple async function run pallerlly)
+
+        
+        console.log(assignA());
+        let b=assignB()
+
+        // a.then((value)=>{
+        //     console.log(value);
+        // })
+        
+        b.then((value)=>{
+            console.log(value);
+        })
+
+
+    </script>
+</body>
+</html>

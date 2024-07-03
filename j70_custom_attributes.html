@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Custom Attributes</title>
+</head>
+<body>
+    <!-- custom attribute create using by data-  -->
+    <div id="first" data-game="gameloft" data-player="migo">nothing</div>
+    <!-- data-game and data-player is not a predefined attribute that was userdefined attributes -->
+    <script>
+        let first=document.getElementById('first');
+        console.log(first.dataset);
+        // dataset give a DOMStringMap those store user defiend attributes and access using dataset
+        console.log(first.dataset.game);// give attribute values as a string
+        console.log(first.dataset.player);
+    </script>
+</body>
+</html>

@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>setTimeout Method</title>
+</head>
+<body>
+    <h1>setTimeout Method</h1>
+    <script>
+        alert("Hello");// time count start when we dismiss this alert
+
+        // setTimeout() : run a function after a time interver and return a timer id
+        // syntax : setTimeout(function,delay,argu1,argu2,...);
+        let timer_id=setTimeout(function(){
+            // alert("Time Out function");
+            // alert("You can atten the exam");
+            console.log("You can atten the exam");
+        },5000);// 5000 -> 5ms
+        console.log("timer_id : ",timer_id);
+        // timer id use to terminte setTimeout function and stop its execution
+        let a=prompt("Enter number between 1 to 10 ");
+        if(a<5){
+            clearTimeout(timer_id);
+        }
+
+        // in this example if you wait in input step and give vaild input that not stop execution of setTimeout method then you observe action perform imegetly not awit for given time because this time already finish because setTimeout execute first and start counting and prompt also start there execution but stop/purse other events , and if prompt work finish then other event start then execution.
+        const sum=(a,b)=>{
+            alert(`a+b is : ${a+b}`);
+            console.log("timer_id2 : ",timer_id2);
+        }
+        let timer_id2=setTimeout(sum,10000,2,3);
+        
+
+        // setTimeout function run at once time
+    </script>
+</body>
+</html>

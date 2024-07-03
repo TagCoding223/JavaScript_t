@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Promise.resolve() and Promise.reject()</title>
+</head>
+<body>
+    <script>
+        // maximum promise method return a new promise as a fullfilled promise with value/reason
+        let p1=Promise.resolve("Resolved promise")
+        let p2=Promise.reject(new Error("Rejected promise"))
+        p1.then((value)=>{
+            console.log(value);
+        },(err)=>{
+            console.log(err);
+        })
+        p2.then((value)=>{
+            console.log(value);
+        },(err)=>{
+            console.log(err);
+        })
+
+        // In real world (in production)we does not need to create a new promise,because if we fetch data from a database then it promise as (we process your request when it fullfilled(as a resolve/reject) it will pass you)
+    </script>
+</body>
+</html>

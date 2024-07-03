@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Js prototype</title>
+</head>
+<body>
+    <script>
+        let obj={
+            name:"vishal",
+            lname:"chouhan"
+        }
+        console.log(obj);
+        // js provide a default prototype 
+        // set a new prototype (override js default prototype) when you want to set same properties and methods on an object then you set a custom prototype 
+
+        let new_prototype1={
+            run:()=>{
+                console.log("new prototype run method in obj");
+            }
+        }
+        obj.__proto__=new_prototype1
+        console.log(obj);
+        obj.run()
+        // when we define a custom prototype then js default prototype will be override and custom prototype has a default js prototype when we not provide a custom prototype
+
+
+        // when we include same properties/methods in object and its prototype both then when we invoke it the object properties/method will be execute , if not found then js engine look inside its prototype.
+        let obj2={
+            a:32,
+            // run:()=>{
+            //     console.log("obj2 a value is : ",obj2.a)
+            // }
+        }
+
+        let obj2_prototype={
+            a:21,
+            run:()=>{
+                console.log("obj2 prototype a value is : ",obj2.a)
+            }
+        }
+        obj2.__proto__=obj2_prototype
+        obj2.run()
+        console.log(obj2);
+        // js object primorty is high as compair to its prototypes (js engine first look inside object then if not match found look inside prototype) 
+
+        // an object has a prototype and a prototype also have an prototype and its has own prototype so on
+        let obj2_prototype_pro={
+            ec:()=>{
+                console.log("i am nested prototype method");
+            }
+        }
+
+        obj2_prototype.__proto__=obj2_prototype_pro
+        obj2.ec()
+        console.log(obj2);
+        // prototype is an object inside an object(you also say that nested object) if we does not provide custom prototype to any object then js6 automatically add a default prototype
+
+        obj2_prototype_pro.__proto__={
+            b:70
+        }
+        console.log("b value exits inside obj2_prototype_pro inside prototype : ",obj2.b);
+        console.log(obj2);
+    </script>
+</body>
+</html>

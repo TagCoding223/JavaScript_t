@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Table Based Navigation</title>
+    <link rel="stylesheet" href="G:\vscode\web addons\bootstrap-4.3.1-dist\bootstrap-4.3.1-dist\css\bootstrap.css">
+</head>
+
+<body>
+    <div class="container my-4">
+        <table class="table">
+            <thead>
+                <tr>
+                    <th scope="col">#</th>
+                    <th scope="col">First</th>
+                    <th scope="col">Last</th>
+                    <th scope="col">Handle</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <th scope="row">1</th>
+                    <td>Mark</td>
+                    <td>Otto</td>
+                    <td>@mdo</td>
+                </tr>
+                <tr>
+                    <th scope="row">2</th>
+                    <td>Jacob</td>
+                    <td>Thornton</td>
+                    <td>@fat</td>
+                </tr>
+                </tr>
+                <tr>
+                    <th scope="row">3</th>
+                    <td colspan="2">Larry the Bird</td>
+                    <td>@twitter</td>
+                </tr>
+            </tbody>
+            <tfoot>
+                <tr>
+                    <td colspan="4">*Not use a legal.</td>
+                </tr>
+            </tfoot>
+        </table>
+    </div>
+    <script src="G:\vscode\web addons\bootstrap-4.3.1-dist\bootstrap-4.3.1-dist\js\bootstrap.js"></script>
+    <script>
+        // table based navigation (table links)
+        let table=document.body.firstElementChild.firstElementChild;
+        console.log(table);
+
+        // return all rows of tables
+        console.log(table.rows);
+
+        // return tables head
+        console.log(table.tHead);
+
+        // return table footer
+        console.log(table.tFoot);
+
+        // return table body
+        console.log(table.tBodies);
+
+
+        console.log(table.rows.item(0))
+        console.log(table.rows.item(2))
+        console.log(table.rows.item(2).cells)
+        console.log(table.rows.item(2).cells[1].innerText)
+
+        // deffer between innerHTML or innerText
+        console.log(table.tFoot.innerHTML);
+        console.log(table.tFoot.innerText);
+
+        // change attribute of a tag
+        table.rows.item(4).cells[0].colSpan='3';
+
+        console.log(table.rows[2].rowIndex);//give row index
+        console.log(table.rows[2].cells[2].cellIndex);//give cell index
+        
+    </script>
+</body>
+
+</html>

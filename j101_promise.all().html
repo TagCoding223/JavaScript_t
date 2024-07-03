@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Promise.all() Method</title>
+</head>
+<body>
+    <script>
+        let p1=new Promise((reslove,reject)=>{
+            setTimeout(() => {
+                reslove("Reslove 1")
+            }, 2000);
+        })
+        
+        let p2=new Promise((reslove,reject)=>{
+            setTimeout(() => {
+                // reslove("Reslove 2")
+                reject(new Error("Something wrong"))
+            }, 6000);
+        })
+        
+        let p3=new Promise((reslove,reject)=>{
+            setTimeout(() => {
+                reslove("Reslove 3")
+            }, 4000);
+        })
+
+        let promise_all=Promise.all([p1,p2,p3])
+        promise_all.then((value)=>{
+            console.log("Now all promise are resolved.");
+            console.log(value);
+        },(err)=>{
+            console.log(err);
+        })
+
+        // Promise.all() use when we want to execute some code when all promise will be resolved.
+        // It returns a new promise with array of resloved value of given promises and this array is a resolved value of new promise
+        // if any promise will be reject(not reslove)then Promise.all() not work,but we see error
+
+        // in short -> work when all promise are resolve and wait for all promise are resolved then return all resolve values of promises
+        // if any promise will be rejected then Promise.all() fullfill return promise as a rejected promise
+        // we can say that we make a bigger promise with addition of small promises
+
+        console.log("Promise 1 ",p1);
+        console.log("Promise 2 ",p2);
+        console.log("Promise 3 ",p3);
+        console.log("Promise_all ",promise_all);
+    </script>
+</body>
+</html>

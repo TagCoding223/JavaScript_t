@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Loadscript using Promise and .then()</title>
+</head>
+
+<body>
+    <script>
+        loadScript = async (src) => {
+            let a = new Promise((resolve, reject) => {
+                setTimeout(() => {
+                    let script = document.createElement('script')
+                    script.type = 'text/javascript'
+                    script.src = src
+                    script.onload = () => {
+                        resolve(`${src} loaded successfully.`)
+                    }
+                    script.onerror = () => {
+                        reject(`${src} loading failed.`)
+                    }
+                    document.body.appendChild(script)
+                }, 3000)
+            })
+            return await a
+        }
+
+        let a = loadScript("./addons/bootstrap/js/bootstrap.js")
+        
+        a.then((value) => {
+            console.log(value);
+        },(err)=>{
+            console.log(err);
+        })
+        
+        
+        let b = async ()=>{
+            console.log("Process start at : ",new Date().getMilliseconds(),"ms");
+            try{
+                let a= await loadScript("./addon/bootstrap/js/bootstrap.js")
+            }catch(err){
+                console.log(err);
+            }
+            console.log("Process finish at : ",new Date().getMilliseconds(),"ms");
+        } 
+        b()
+
+        
+    </script>
+</body>
+
+</html>

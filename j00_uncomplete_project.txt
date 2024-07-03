@@ -1,0 +1,6 @@
+file name : G:\vscode\JavaScript_t\j121_fetchapi.html
+task : fetched record(from local api and global api) display on page 
+
+file name : j130_notes_localstorage.html
+task : resolve glitch
+

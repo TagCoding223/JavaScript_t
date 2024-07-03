@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fetch Api</title>
+    <link rel="stylesheet" href="./addons/bootstrap/css/bootstrap.css">
+</head>
+
+<body>
+    <!-- <div class="container">
+    <h3 style="font-size: 2.75rem;font-style: oblique;margin: 2vh 5vw;">Banking</h3>
+    <div class="container">
+          <div class="row mx-4 my-4">
+            <div class="col-sm">
+                <div class="card" style="width: 18rem;">
+                    <img class="card-img-top" src="..." alt="Card image cap">
+                    <div class="card-body">
+                      <h5 class="card-title">Card title</h5>
+                      <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                      <a href="#" class="btn btn-primary">Go somewhere</a>
+                    </div>
+                  </div>
+            </div>
+            <div class="col-sm">
+                <div class="card" style="width: 18rem;">
+                    <img class="card-img-top" src="..." alt="Card image cap">
+                    <div class="card-body">
+                      <h5 class="card-title">Card title</h5>
+                      <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                      <a href="#" class="btn btn-primary">Go somewhere</a>
+                    </div>
+                  </div>
+            </div>
+            <div class="col-sm">
+                <div class="card" style="width: 18rem;">
+                    <img class="card-img-top" src="..." alt="Card image cap">
+                    <div class="card-body">
+                      <h5 class="card-title">Card title</h5>
+                      <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                      <a href="#" class="btn btn-primary">Go somewhere</a>
+                    </div>
+                  </div>
+            </div>
+          </div>
+          <div class="row mx-4 my-4">
+            <div class="col-sm">
+                <div class="card" style="width: 18rem;">
+                    <img class="card-img-top" src="..." alt="Card image cap">
+                    <div class="card-body">
+                      <h5 class="card-title">Card title</h5>
+                      <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                      <a href="#" class="btn btn-primary">Go somewhere</a>
+                    </div>
+                  </div>
+            </div>
+            <div class="col-sm">
+                <div class="card" style="width: 18rem;">
+                    <img class="card-img-top" src="..." alt="Card image cap">
+                    <div class="card-body">
+                      <h5 class="card-title">Card title</h5>
+                      <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                      <a href="#" class="btn btn-primary">Go somewhere</a>
+                    </div>
+                  </div>
+            </div>
+            <div class="col-sm">
+                <div class="card" style="width: 18rem;">
+                    <img class="card-img-top" src="..." alt="Card image cap">
+                    <div class="card-body">
+                      <h5 class="card-title">Card title</h5>
+                      <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                      <a href="#" class="btn btn-primary">Go somewhere</a>
+                    </div>
+                  </div>
+            </div>
+          </div>
+    </div>
+    </div> -->
+    <script>
+        /*
+        AJAX (Asynchronous Javascript And Xml) : without reloading ke page , data ko load kar leta he ajax ki help se
+
+        syntax :
+            let p=fetch('url',options)
+            it return a network promise with values we want to fetch and fetch(network) status
+            if we not provide options then fetch use get method by default(in get method data dispaly on url),get method not recommended because url has a limit to store data and they have some security issues.
+            
+            * fetch() return a promise from network as a resolved/rejected with some response values and with ask data/info(like status,ok,header,data etc)
+
+            getting a response is a 2 stage process
+
+            p.then((response)=>{
+            1 -> an object of \response class containing 'status' and 'ok' properties.
+                'status' - th http status code . e.g. 200
+                'ok' - boolean ,true if the http status code is 200 - 299
+            2 -> after that we need to call another method to access the body in different formats:
+                .text() -> read and return the text , .json() -> pass the response as json , .block() , .blog() , .arrayBuffer() , .fromData()
+            
+                you use only one method at a time in response(this) block.
+                if we use like that then we face error
+                {
+                    clg(response.json())
+                    return response.text()
+                    // throw an error
+                }
+
+                * this block execute when fetch() pass a promise as a resolved promise 
+                    In that block we deal with network response like http status,ok and more 
+                    this block allow us to deal with an expected case like status not belong 200 and belog to 404 500 and we catch it and run a defferent code with help of status and of properties of response
+
+                    if everthing is allright in network response then we convert response into a readable format using different method and pass it to next then as a new promise
+            }).then((value)=>{
+                * In block value is rsolved response that hold fetched info as a value then we can perform opretion on it
+            })
+            
+        */
+        //    let p=fetch("https://goweather.herokuapp.com/weather/Ny")
+        //    let p=fetch("http://www.7timer.info/bin/api.pl?lon=113.17&lat=23.09&product=astro&output=json")
+        //    let p=fetch("https://api.oceandrivers.com/static/resources.json")
+        //  let p=fetch("https://ok.surf/api/v1/cors/news-feed")
+
+        //Fetch API cannot load localhost:8081/news. URL scheme "localhost" is not supported.
+        // let p = fetch("http://localhost:3000/news")
+        let p = fetch("http://localhost:3000/news/5")
+        
+        // deployment test
+        // let p = fetch("https://vapi-uxd9.onrender.com/news/4")
+        // let p = fetch("https://vapi-uxd9.onrender.com/news")
+        
+        p.then((response) => {
+            console.log("response.status : ", response.status);
+            console.log("response.ok : ", response.ok);
+            console.log("response.header : ", response.header);
+            // Response headers -> pass server to us and now we can use it
+            console.log("response : ", response);
+            return response.json()
+        }).then((value) => {
+            console.log(value);
+            document.write(JSON.stringify(value))
+        }).catch((err) => {
+            console.log(err);
+        })
+    </script>
+    <script src="./addons/bootstrap/js/bootstrap.js"></script>
+</body>
+<!-- 
+  Methods info of api's
+  get : retrive all infomation
+  get:id : retrive specific infomation
+  post : create new info
+  put : update an info
+  delete : delete an info
+-->
+</html>

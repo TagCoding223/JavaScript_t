@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Different alert on different button</title>
+</head>
+<body>
+    <button type="button" onclick="alert('Clicked Button 1')">Button 1</button>
+    <button type="button" onclick="alert('Clicked Button 2')">Button 2</button>
+    <button type="button" onclick="alert('Clicked Button 3')">Button 3</button>
+    <a href="https://google.com"><button>Google</button></a>
+    <button id="facebook">Facebook</button>
+    <button id="instgram">instgram</button>
+    <button id="salman">Salman Khan</button>
+    <script>
+        let btn1=document.getElementById('facebook')
+        btn1.addEventListener('click',()=>{
+            var url="https://fb.com"
+            var win=window.open(url,"","width=500,height=500,scrollbars=yes,resizable=yes")
+            win.focus()
+        })
+        let btn2=document.getElementById('instgram')
+        btn2.addEventListener('click',()=>{
+            window.location="https://instgram.com"
+        })
+        let btn3=document.getElementById('salman')
+        btn3.addEventListener('click',()=>{
+            var url="https://www.google.com/search?q=salman+khan"
+            var win=window.open(url,"","width=500,height=500,scrollbars=yes,resizable=yes")
+            win.focus()
+        })
+    </script>
+</body>
+</html>

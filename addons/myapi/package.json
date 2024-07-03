@@ -1,0 +1,11 @@
+{
+  "name": "myapi",
+  "version": "1.0.0",
+  "description": "This is my custom api that i am use in javascript_t project that api hold 'ok surf' api data.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "vishal chouhan",
+  "license": "ISC"
+}

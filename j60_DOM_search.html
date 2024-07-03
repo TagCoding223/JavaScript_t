@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DOM Search</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body{
+            display: flex;
+            flex-direction: row;
+            flex-wrap: wrap;
+            justify-content: center;
+            align-items: center;
+            width: 100vw;
+            min-height: 100vh;
+        }
+        .container{
+            width: 250px;
+            height: 250px;
+            background: aqua;
+            margin: 10px;
+        }
+        input{
+            margin: 10px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container" id="first-card">
+        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Perspiciatis, sapiente officia. Quam vitae sequi architecto ut quibusdam magni laudantium! Facilis?</p>
+    </div>
+    <div class="container">
+        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Perspiciatis, sapiente officia. Quam vitae sequi architecto ut quibusdam magni laudantium! Facilis?</p>
+    </div>
+    <div class="container">
+        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Perspiciatis, sapiente officia. Quam vitae sequi architecto ut quibusdam magni laudantium! Facilis?</p>
+    </div>
+    </div>
+    <div class="container">
+        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Perspiciatis, sapiente officia. Quam vitae sequi architecto ut quibusdam magni laudantium! Facilis?</p>
+    </div>
+    </div>
+    <div class="container">
+        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Perspiciatis, sapiente officia. Quam vitae sequi architecto ut quibusdam magni laudantium! Facilis?</p>
+    </div>
+    <input type="text" name="input">
+    <input type="text" name="input">
+    <input type="text" name="input">
+    <script>
+        // Dom Search
+
+        // get Element by id
+        let first_card=document.getElementById('first-card');
+        console.log(first_card);
+        first_card.style.background='yellow';
+
+        // get Elements by class name
+        let container=document.getElementsByClassName('container'); // return html collection
+        console.log(container);
+        container[2].style.color='white';
+
+        // get Elements by tag name
+        let paragraph=document.getElementsByTagName('p'); // return html collection
+        console.log(paragraph);
+        paragraph[1].style.paddingTop="20px";
+
+        // get Elements by input tag name attribute
+        let by_input_name_att=document.getElementsByName('input');// return NodeList
+        console.log(by_input_name_att);
+
+        // Query Selector All -> css selector(that way need # and . and other)
+        // let con=document.querySelectorAll('.container');// return NodeList
+        let con=document.querySelectorAll('#first-card');
+        let con1=document.querySelectorAll('.container');
+        console.log(con);
+        console.log(con1);
+        con1[3].style.background='black';
+        con1[3].style.color='aqua';
+
+        // if you want to access first element using query selector
+        let first_con=document.querySelector('.container');// return just one element
+        console.log(first_con);
+        first_con.style.paddingTop='30px';
+
+        console.log(con1[0] === first_con);
+
+        let css_div=document.querySelectorAll('div');
+        console.log(css_div);
+
+        // querySelector work with css selector and tag name also because tag name also use as an css selector
+    </script>
+</body>
+</html>

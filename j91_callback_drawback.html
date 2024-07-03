@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Callback function drawback</title>
+</head>
+
+<body>
+    <ul>
+        <h1>Drawback</h1>
+        <li>Give complete control of function that is harmful if any think will be change extendly.</li>
+        <li>Pyramid of DOM/Callback hell
+            <pre>
+                loadScript(src,(src,error)=>{
+                    if(error){
+                        console.log(error);
+                        loadScript(src2,(src2,error)=>{
+                            if(error){
+                                console.log(error);
+                                loadScript(src3,(src3,error)=>{
+                                    ........
+                                })
+                            }
+                        })
+                    }
+                    loadScript(src5,(src5,error)=>{
+                        ........
+                    })
+                })
+            </pre>
+            <strong>Code grow in horizontal direction that reduce code readability.(that wise we use promise)</strong><br>
+            <strong>This is allow , but not recommended because 1,2 and 3 times its easy but difficult if many callback
+                present then we switch to promisec</strong>
+        </li>
+    </ul>
+</body>
+
+</html>

@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Custom Error</title>
+</head>
+<body>
+    <script>
+        try {
+            let a=Number.parseInt(prompt("Enter a number"))
+            if(a==0){
+                throw new Error("Divide by zero.")
+            }
+            if(a<0){
+                throw new Error("Number is negative.")
+            }
+            document.write(`Given number : ${a}`)
+        } catch (error) {
+            console.log(error);
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Session Storage</title>
+</head>
+<body>
+    <script>
+        console.log(sessionStorage);
+        sessionStorage.setItem("name","vishal")
+        sessionStorage.setItem("password","9211")
+        sessionStorage.setItem("username","vishal@123")
+        console.log(sessionStorage);
+
+        // session storage acts in a similar way to local storage . the only difference here is that while data stored in local storage has an expriration date , the data stored in session storage will expire as soon as the page's session ends , that's it , when the page is closed.
+
+        // they have same methods and propertys as a local storage.
+        // data servies page refresh ,but nit closing/opening the tab
+
+        // storage event : when the data gets updated in local storage or session storage . storage event trigger with key,old value,new value,url and storage area properties.
+        sessionStorage.setItem("name","kumkum")
+        localStorage.setItem("king","zero")
+        localStorage.setItem("king","heroo")
+
+        console.log(sessionStorage);
+        window.onstorage=(e)=>{
+            console.log("changed");
+            console.log(e);
+        }
+    </script>
+</body>
+</html>

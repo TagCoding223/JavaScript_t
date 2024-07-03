@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Guess a Number!</title>
+</head>
+<body>
+    <script>
+        
+        // Math.random() : always returns a number lower thsn 1.
+        // Math.random() used with Math.floor() can be used to return random integers.
+        // There is no such thing as JavaScript integers.
+        // We are talking about numbers with no decimals here.
+        // Math.floor(Math.random()*10); Returns a random integer from 0 to 9
+        // Math.floor(Math.random()*11); Returns a random integer from 0 to 10
+        // Math.floor(Math.random()*10)+1; Returns a random integer from 1 to 10
+        // Math.floor(Math.random()*100); Returns a random integer from 0 to 99
+        // Math.floor(Math.random()*101); Returns a random integer from 0 to 100
+        // Math.floor(Math.random()*100)+1; Returns a random integer from 1 to 100
+
+        let g_num=Math.floor(Math.random()*101);
+        // console.log(g_num);
+        let number;
+        let attem=1;
+        do {
+            number=prompt("Guess a number from 0 to 100");
+            if(number>g_num){
+                alert("Guess number is bigger than acture number , try with lower numbers");
+            }
+            if(number<g_num){
+                alert("Guess number is smaller than acture number , try with bigger numbers");
+            }
+            attem++;
+        } while (number!=g_num);
+        if(number==g_num){
+            document.write("Now , you are guess the right number , the actural number is : ",g_num," , and you take ",attem," attemes to guess actual number");
+            document.body.style.background="beige";
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,8 @@
+ECMAScript(ES) is a standard on which JavaScript is based.
+JavaScript is very liable (JavaScript ignore semicolon mistake not throw error )
+
+Ways to run JavaScript
+
+1 -> browser console
+2 -> Runtime environment like node js , replit website
+3 -> Use script tag in html document

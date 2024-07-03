@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Promise with then() catch()</title>
+</head>
+<body>
+    <script>
+        let p1=new Promise((accept,deny)=>{
+            setTimeout(()=>{
+                accept(true)
+            },5000)
+        })
+
+        let p2=new Promise((resolve,reject)=>{
+            setTimeout(()=>{
+                reject(new Error("Promise will be rejected by system."))
+            },10000)
+        })
+
+        console.log("Promise 1 : ",p1);
+        console.log("Promise 2 : ",p2);
+
+        // if work finish of promise then do that if it resolve
+        p1.then((value)=>{
+            console.log("Promise 1 successfully resolved.");
+            console.log("Promise 1 will be fullfilled with value : ",value);
+        })
+
+        // when error occur then handle it using catch
+        p2.catch((error)=>{
+            console.log("Promise 2 will be rejected.");
+            console.log("Promise 2 will be fullfilled with : ",error);
+        })
+    </script>
+</body>
+</html>

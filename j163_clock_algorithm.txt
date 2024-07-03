@@ -1,0 +1,68 @@
+Part one :24hour format
+Certainly! To find the difference between two times in JavaScript, you can follow these steps:
+
+Convert the time values (given as strings in 24-hour format) to Date objects.
+Calculate the difference between the two Date objects.
+Convert the difference from milliseconds to hours, minutes, and seconds.
+Here’s an example code snippet
+
+let time1 = "09:00"; // First time
+let time2 = "17:00"; // Second time
+
+// Create Date objects using an arbitrary date part (e.g., "2000-01-01") and the specified time
+let date1 = new Date(`2000-01-01T${time1}Z`);
+let date2 = new Date(`2000-01-01T${time2}Z`);
+
+// Handle cases where the times are on opposite sides of midnight
+if (date2 < date1) {
+    date2.setDate(date2.getDate() + 1);
+}
+
+// Calculate the difference in milliseconds
+let diff = date2 - date1;
+
+// Convert milliseconds to hours, minutes, and seconds
+let ms = diff % 1000;
+let ss = Math.floor(diff / 1000) % 60;
+let mm = Math.floor(diff / 1000 / 60) % 60;
+let hh = Math.floor(diff / 1000 / 60 / 60);
+
+console.log(`${diff}ms = ${hh}hr, ${mm}min, ${ss}sec, ${ms}ms`);
+
+Part two :12hour format
+
+function parseTime(timeStr) {
+    const [hours, minutes] = timeStr.split(":").map(Number);
+    return { hours, minutes };
+}
+
+function calculateTimeDifference(time1, time2) {
+    const date1 = parseTime(time1);
+    const date2 = parseTime(time2);
+
+    // Convert to minutes
+    const minutes1 = date1.hours * 60 + date1.minutes;
+    const minutes2 = date2.hours * 60 + date2.minutes;
+
+    // Calculate the absolute difference
+    let diffMinutes = Math.abs(minutes2 - minutes1);
+
+    // Handle cases where the times are on opposite sides of noon/midnight
+    if (diffMinutes > 720) {
+        diffMinutes = 1440 - diffMinutes;
+    }
+
+    const hours = Math.floor(diffMinutes / 60);
+    const minutes = diffMinutes % 60;
+
+    return { hours, minutes };
+}
+
+const time1 = "09:00"; // First time
+const time2 = "17:00"; // Second time
+
+const { hours, minutes } = calculateTimeDifference(time1, time2);
+console.log(`${hours}hr ${minutes}min`);
+
+
+referby : copilot

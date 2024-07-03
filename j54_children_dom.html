@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dom Children</title>
+</head>
+
+<body><div class="container">
+        <h1>Dom intro</h1>
+        <div class="container">
+            <p>hello Guys</p>
+        </div>
+        <table>
+            <tr>
+                <td>name</td>
+                <td>class</td>
+                <td>age</td>
+                <td>address</td>
+            </tr>
+        </table>
+    </div>
+    <script>
+        /*
+            decendent node  -> node ke andar node (html->body->tags)
+        */
+       
+        // childern
+        console.log("children of html : ",document.head.children);
+       
+        // first child
+        console.log(document.body.firstChild);// body and div have space between them then this line return text otherwiise return complete div
+
+        // last child
+        console.log(document.body.lastChild); // return complete sccript tag
+
+        // childNodes
+        console.log(document.body.firstChild.childNodes); // return NodeList 
+        console.log(document.body.firstChild.childNodes[1]);// retuen h1
+        console.log(document.body.firstChild.childNodes[1].innerHTML);// retuen h2 leaf/child, means text of h1
+
+        // following is always true
+        console.log(document.body.childNodes[0]===document.body.firstChild);
+        console.log(document.body.childNodes[document.body.childNodes.length-1]===document.body.lastChild);
+
+        // There is also  a method element.hasChildNode() to check whether there are any child nodes.
+        // childNodes not a array it is a collection and not to convert using Array.from(obj) that reaturn an array
+        console.log("are body has child : ",document.body.hasChildNodes());
+        let arr=Array.from(document.body);
+        console.log(arr);
+        // array from convert NodeList into array but it can't be useful
+
+    </script>
+</body>
+
+</html>

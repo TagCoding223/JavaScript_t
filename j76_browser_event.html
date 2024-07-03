@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Browser Event</title>
+</head>
+<body>
+    <button onclick="alert('long js button clicked');let a=89; alert(`a is : ${a}`);">Long JS</button>
+    <!-- long js statements allow but not recommended -->
+    <button onclick="dis()">Click Me</button>
+    <button id="first" onclick="dis()">id Base Direct Event</button>
+    
+    <script>
+        // DOM Event
+        // Mouse : click,contextMenu(rightClick),mouseover/mouseout,mousedown/mouseup,mousemove
+        // Keyboard Event : keydown & keyup
+        // form element event : submit , focus , etc.
+        // document events : DOMContentLoaded.
+
+        function dis(){
+            alert("Click me function event call");
+        }
+
+        let first=document.getElementById('first');
+        first.onclick=()=>{// it always use as a arrow function
+            alert("Direct onclick() event call");
+        }
+
+        // last button has dis() function on onclick attribute but in js i am add a new onclick event function on it that override onclick attribute function and run js define event function/method.
+        // it's allow but event operation will be override
+    </script>
+</body>
+</html>

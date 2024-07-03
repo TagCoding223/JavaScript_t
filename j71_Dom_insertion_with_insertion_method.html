@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Insertion in DOM with insertion Methods</title>
+</head>
+<body>
+    <div class="container">
+        <div>I am inner div.</div>
+    </div>
+    <script>
+        let container=document.getElementsByClassName('container');
+        // console.log(container);
+
+        // insertion in dom in teditional way
+        container[0].innerHTML=container[0].innerHTML+"<h1>hello</h1>";
+
+        // insertion using insertion methods and appenChild
+
+        // step 1 : create new Element(node)
+        let div=document.createElement('div');
+        div.innerHTML="<h2>This is heading append in body</h2>";
+
+        // 1 -> append(node/element) : append at the end of node
+        document.body.append(div);//append inside body at end
+        container[0].append("<h2>This heading append inside container end</h2>");// in that condition h2 is not a tag it is a string
+        div.innerHTML="<h2>this is append in body but override previous statement</h2>";// override previous statment , beacuse all append() method run at the last in js (means line no 26 append() method run at the end but display line 28 not line 23)
+
+        let p=document.createElement('p');
+        p.innerText="This is append inside container at end position.";
+
+        container[0].appendChild(p);
+        container[0].append(p);
+        container[0].append(div);
+        // every element in js append only one time
+        // and append() or appenChild() method work same
+
+        // 2 -> prepend(node/element) : insert at the beginning of the node
+        let prependDiv=document.createElement('div');
+        prependDiv.innerText="this is prepand method add at beginning";
+        document.body.prepend(prependDiv);
+
+        // 3 -> before(element) : insert before node
+        let beforeDiv=document.createElement('div');
+        beforeDiv.innerText="this is before method add at before node";
+        container[0].before(beforeDiv);
+
+        // 4 -> after(node/element) : insert after node
+        let afterDiv=document.createElement('p');
+        afterDiv.innerText="insert after container";
+        container[0].after(afterDiv);
+
+        // 5 -> replaceWith(element) : replace node with the given node
+        let replaceDiv=document.createElement('div');
+        replaceDiv.innerText="This div replace the script block, but it will be exists on source code";
+        document.body.getElementsByTagName('script')[0].replaceWith(replaceDiv);
+
+    </script>
+</body>
+</html>

@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>classList & className with methods</title>
+    <style>
+        .red{
+            color: white;
+            background: red;
+        }
+        .yellow{
+            color: white;
+            background: yellow;
+        }
+        .text-dark{
+            color: black;
+        }
+    </style>
+</head>
+<body>
+    <div id="first" class="red">hi, come on guys!</div>
+    <script>
+        let first=document.getElementById('first');
+
+        // view class values
+
+        // classList : this property give all class that present in element in from of DOMTokenList  (like a collection)
+        console.log(`first has those classes ${first.classList}`);//string
+        console.log("class value of first : ",first.classList);//object
+
+        // className : this property give all class values in form of string
+        console.log("class value of first : ",first.className);
+
+        // set class value (override previous value)
+        // 1 -> Using add() method
+        first.classList.add('text-dark');// here not override class values
+        console.log("class value of first : ",first.className);
+        // 2 -> Using className
+        first.className="yellow";// here class values overrides(when you check it on browser then comment line 42)
+        console.log("class value of first : ",first.className);
+        first.className="yellow text-dark";
+        console.log("class value of first : ",first.className);
+
+        // remove specific class value
+        first.classList.remove("yellow");
+        console.log("class value of first : ",first.className);
+
+        // toggle() : with classList
+        // if class value present then remove it and vice versa.
+        console.log("before toggle , class value of first : ",first.className);
+        first.classList.toggle('red');
+        console.log("after 1 toggle , class value of first : ",first.className);
+        first.classList.toggle('red');
+        console.log("after 2 toggle , class value of first : ",first.className);
+        first.classList.toggle('red');
+        console.log("after 3 toggle , class value of first : ",first.className);
+        first.classList.toggle('red');
+        console.log("after 4 toggle , class value of first : ",first.className);
+        
+        // contains() : check given class is present or not in element and return true/false.
+        console.log("Is class value of first has red : ",first.classList.contains('red'));
+
+    </script>
+</body>
+</html>

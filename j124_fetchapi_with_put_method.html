@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fetch api with put method</title>
+</head>
+<body>
+    
+    <script>
+        let p=fetch('http://localhost:3000/news',{
+        // let p=fetch('https://vapi-uxd9.onrender.com/news',{
+            method:'PUT',
+            body:JSON.stringify({
+                id:8,
+                title:'Vishal',
+                news_link:'Chouhan',
+                image_link:'http://unplash.com',
+                news_host:'cdn',
+            }),
+            headers:{
+                'Content-type':'application/json'
+            }
+        })
+        p.then((response)=>{
+            console.log(`Response : ${response}`);
+            console.log(`Response status : ${response.status}`);
+            console.log(`Response ok : ${response.ok}`);
+            return response.json()
+        }).then((value)=>{
+            console.log(value);
+        })
+    </script>
+</body>
+</html>

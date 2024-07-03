@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Promise Intro</title>
+</head>
+<body>
+    <script>
+        let p=new Promise(function(resolve,reject){// that resolve and reject just a argu name use for code readability
+            // reslove and reject are callback function that provided by js engine by default
+            console.log("hello");
+            setTimeout(()=>{
+                console.log("5sec later");
+                resolve(45)
+                console.log(p);
+            },5000)
+        })
+        setTimeout(()=>{
+            console.log("2sec later");
+        },2000)
+        console.log(p);
+        // Promise will be fullfilled by resolve or reject.
+        // Promise is a promise to run a code.
+        // Promise has two thing (property)
+            // i -> state(undefined,panding,fullfilled)
+            // ii -> result(resolve->value,reject->error)
+        // Promise use for pallel execution like fetch image and details pallel from different db.
+        
+    </script>
+</body>
+</html>

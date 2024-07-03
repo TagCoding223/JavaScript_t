@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Error handling in js</title>
+</head>
+<body>
+    <script>
+        setTimeout(() => {
+            console.log("Trying to fetch records from database....");
+        }, 1000);
+
+        // this line throw an error that wise before code not run,but we want to run complete script even if error occur in our script then we use try catch block on that pices of code there are a change to throw an error at run time (try catch run our compelete code even error occur in our script)
+        try{
+            console.log(a);
+        }catch(err){// here err is an error object
+            
+            console.log(err);
+        }
+
+        setTimeout(() => {
+            console.log("Records completely fetched from database....");
+        }, 4000);
+    </script>
+</body>
+</html>

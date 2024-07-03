@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Static Method</title>
+</head>
+<body>
+    <script>
+        let a=0
+        class A{
+            static run(){
+                // let a=0 //when we call run then each time a initizlaize by 0 
+                console.log(a);
+                a=a+1
+            }
+        }
+        A.run()
+        A.run()
+        A.run()
+    </script>
+</body>
+</html>

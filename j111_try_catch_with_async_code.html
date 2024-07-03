@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Try catch with async code</title>
+</head>
+
+<body>
+    <script>
+        // this code not handle error because try handle synchronuos code
+        // try look inside it scope then it see a block of code need to schedule then try schedule this block and go to next statement and try scope finish after that schedule code run but try block scope already finished that why try cannot handle it
+
+        try {
+            setTimeout(() => {
+                console.log(a);
+            }, 1000);
+        } catch (err) {
+            console.log(err);
+        }
+
+
+        // but if try scope present at schedule code block then it can handle it
+        // try catch works synchronosly
+
+        // solution
+        setTimeout(() => {
+            try {
+                console.log(a);
+            } catch (error) {
+                console.log(error);
+            }
+        }, 2000);
+    </script>
+</body>
+
+</html>

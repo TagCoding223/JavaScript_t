@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Promise with then() and catch()</title>
+</head>
+
+<body>
+    <em>
+        <b>
+            Number : <input type="number" name="" id="number"><br><br>
+            Divider : <input type="number" name="" id="divider"><br><br>
+            <button type="submit">Submit</button>
+        </b>
+    </em>
+    <script>
+        let number, divider
+        document.getElementsByTagName('button')[0].addEventListener('click', () => {
+            number = Number.parseInt(document.getElementById('number').value)
+            divider = Number.parseInt(document.getElementById('divider').value)
+            let promise = new Promise((resolve, reject) => {
+                if (divider == 0) {
+                    reject(new Error("Divide by zero not allowed."))
+                } else {
+                    resolve(number / divider)
+                }
+            })
+
+            // use then and catch in single block
+            // promise.then((result) => {
+            //     console.log("The result of ", number, "/", divider, " is : ", result);
+            // }).catch((err) => {
+            //     console.log(err);
+            // });
+
+            promise.then((result) => {
+                console.log("The result of ", number, "/", divider, " is : ", result);
+            }, (err) => {
+                console.log(err);
+            });
+        })
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Promise Chaining with multiple then()</title>
+    <style>
+        h1{
+            animation: animate 10s ease-in-out infinite ;
+        }
+        @keyframes animate {
+            0%{
+                margin-left: 0vw;
+            }
+            50%{
+                margin-left: 90vw;
+            }
+            100%{
+                margin-left: 0vw;
+            }
+        }
+    </style>
+</head>
+<body>
+    <h1>Boring!!!</h1>
+    <script>
+        // Promise chaning
+        let p=new Promise((resolve,reject)=>{
+            setTimeout(() => {
+                resolve("Promise")
+            }, 2000);
+        })
+
+        p.then((value)=>{
+            // it has p value , next then execute when this block complete its work/execution and this block promise value pass to next promise that way this is solve callback hell problem
+            console.log(value);
+            return new Promise((resolve,reject)=>{
+                setTimeout(() => {
+                    resolve("Promise 2")
+                }, 2000);
+            })
+        }).then((value)=>{
+            console.log(value);
+            console.log("We have done");
+            return 2
+            // js convert it a new promise
+        }).then((value)=>{
+            console.log(value);
+            console.log("Now we are pakka done");
+        })
+
+        // Promise chaning me next then() previous then() ke baat charta he (previous then completely execute hona chahiye or promise fullfill honi chahiye)
+
+        // in sabhi then ke liye kiwal ek hi catch() block hoga
+    </script>
+</body>
+</html>

@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Finally block</title>
+</head>
+<body>
+    <script>
+        fun=()=>{
+            try{
+                return
+            }catch(error){
+                console.log(error);
+            }finally{
+                console.log("Hello i'm finally block run even you use return keyword inside try or catch block just before return");
+            }
+        }
+
+        // case 1 : try does not have any error
+        try {
+            console.log("Try : No error try block.");
+        } catch (error) {
+            console.log("Catch : ",error);
+        }finally{
+            console.log("Finally : This is no error try finally block");
+        }
+
+        // case 2 : try has a error
+        try {
+            throw new Error("This is demo error")
+        } catch (error) {
+            console.log("Catch : ",error);
+        }finally{
+            console.log("Finally : Try has a error.");
+        }
+
+        // case 3 : try and catch has a error
+        try {
+            throw new Error("This is demo error in try block")
+        } catch (error) {
+            console.log(error);
+            throw new Error("This is demo error in catch block")
+            // console.log(p);
+        }finally{
+            console.log("Finally : i always run even try and catch also have an error");
+            fun()//i use function calling in that place because outside finally block code not execute because catch block has an uncatched error
+            throw new Error("Error in finally")// below code not execute because this line has an uncatched error
+            console.log("Statement in finally after an error statement.");//this line cannout execute 
+        }
+        console.log("i'm not execute because catch block has an uncatched error");
+
+        // finally use in this case(close the file,exit the loop,return to a function,write to the log file)
+        // if try block run completely,catch block run completely,try block run half(not execute completely , an error occur in try block) and catch block run half(not execute completely , an error occur in catch block) finally block run in each condition.
+
+        // even if you use try-catch block inside a function and use return in try catch block and define a finally block in this function then before return finally block execute just before return
+
+        // finally block say to es6 i'm run in any condition and any case
+        
+    </script>
+</body>
+</html>

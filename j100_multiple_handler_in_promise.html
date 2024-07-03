@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Multiple Handler in Promise</title>
+</head>
+<body>
+    <script>
+        let p=new Promise((resolve,reject)=>{
+            setTimeout(()=>{
+                resolve("Main Promise resolve")
+            },2000)
+        })
+
+        p.then((value)=>{
+            console.log(new Date().getMilliseconds());
+            console.log(value);
+            console.log("I'm first .then()");
+            for (let index = 0; index < 50000; index++) {
+                
+            }
+        })
+
+        p.then((value)=>{
+            console.log(new Date().getMilliseconds());
+            console.log(value);
+            console.log("I'm second .then()");
+        })
+
+        // multiple handling me .then() flow of program ke sath execute hote he one by one(it cannot run it same time)
+        // every .then() run independently and has the resolve value of main promise
+        // we use multiple handler to run independed code means each then block run different code independently
+    </script>
+</body>
+</html>

@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Async and await</title>
+</head>
+<body>
+    <script>
+        async function a(){
+            let p=new Promise((resolve,reject)=>{
+                setTimeout(() => {
+                    resolve("Promise resoled 1")
+                }, 2000);
+            })
+            return await p
+        }
+
+        async function b(){
+            let p=new Promise((resolve,reject)=>{
+                setTimeout(() => {
+                    resolve("Promise resolved 2")
+                }, 4000);
+            })
+            return await p
+        }
+
+        run=async ()=>{
+            let x=await a()
+            console.log(x);
+            let y=await b()
+            console.log(y);
+        }
+        
+        run()
+
+        // js engine in await wait the promise completely fullfilled then go to next statement
+        // await store value/reason of a promies into a variable
+        
+    </script>
+</body>
+</html>

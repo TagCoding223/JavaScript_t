@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Date in js</title>
+</head>
+<body>
+    <p>Time : <span id="hour"></span> : <span id="min"></span> : <span id="sec"></span></p>
+    <p>Date : <span id="date"></span></p>
+    <script>
+        let date= new Date()
+        let hour=date.getHours()
+        let min=date.getMinutes()
+        let sec=date.getSeconds()
+        let curr_date=date.getDate()
+
+        let sp_hour=document.getElementById('hour')
+        let sp_min=document.getElementById('min')
+        let sp_sec=document.getElementById('sec')
+        let sp_date=document.getElementById('date')
+        
+        sp_hour.innerText=hour;
+        sp_min.innerText=min;
+        sp_sec.innerText=sec;
+        sp_date.innerText=date;
+        setInterval(()=>{
+            date=new Date()
+            hour=date.getHours()
+            min=date.getMinutes()
+            sec=date.getSeconds()
+
+            sp_sec.innerText=sec
+            sp_hour.innerText=hour
+            sp_min.innerText=min
+            // delete date this line use when i create a new object each time
+        },1000)
+    </script>
+</body>
+</html>

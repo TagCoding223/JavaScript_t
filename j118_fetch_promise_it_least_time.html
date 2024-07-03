@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fetch db record in lease time</title>
+</head>
+<body>
+    <script>
+        a=async ()=>{
+            return new Promise((resolve,reject)=>{
+                setTimeout(() => {
+                    resolve("Red tshirt")
+                }, 3000);
+            })
+        }
+        
+        b=async ()=>{
+            return new Promise((resolve,reject)=>{
+                setTimeout(() => {
+                    resolve("Pink tshirt")
+                }, 2000);
+            })
+        }
+        
+        c=async ()=>{
+            return new Promise((resolve,reject)=>{
+                setTimeout(() => {
+                    resolve("Yellow tshirt")
+                }, 5000);
+            })
+        }
+
+        const run=async ()=>{
+            console.time("run")
+            let a1=await a()
+            let b1=await b()
+            let c1=await c()
+            console.log(a1,b1,c1);
+            console.timeEnd("run");
+
+            console.time("idealrun");
+            let promise_all=await Promise.all([a(),b(),c()])
+            console.log(promise_all);
+            console.timeEnd("idealrun");
+        }
+        run()
+    </script>
+</body>
+</html>

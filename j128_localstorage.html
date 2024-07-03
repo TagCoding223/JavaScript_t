@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Local Storage</title>
+</head>
+<body>
+    <script>
+        // local storage not send by browser to each request.
+        // You can see local storage -> inspect element -> application -> local storage
+        // local storage is a web storage object which are not send to server with each request.
+        // this data servive a full page refresh and even a full browser restart.
+        // and this avaliable for all page in same domain
+
+        localStorage.setItem("name","vishal")
+        localStorage.setItem("password","9211")
+        localStorage.setItem("username","vishal@123")
+        console.log("value of name in local storage : ",localStorage.getItem('name'));
+        console.log("Key on index 1 is : ",localStorage.key(1));
+        localStorage.removeItem("password")
+        // update value of specific key
+        localStorage.setItem("name","kumkum")
+        console.log(localStorage.length," items avilable in local storage");
+        localStorage.clear()//clear local storage completely
+
+        // Second syntax of local storage
+        localStorage.name="vishal"
+        console.log(localStorage.name);
+        delete localStorage.name
+        console.log(localStorage.name);
+
+        // both key and value must be strings
+        // we can use the two json methods to store objects in localstorage
+        // 1 -> JSON.stringify(object)
+        console.log(JSON.stringify({
+            "name":"vishal",
+            "friend":"kumkum",
+            "friend2":"udit",
+            "friend3":"Shiv"
+        })); // convert object to Json string
+
+        console.log(JSON.parse('{"firstName":"John", "lastName":"Doe"}')); // convert string to object
+    </script>
+</body>
+</html>

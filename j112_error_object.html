@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Error object</title>
+</head>
+<body>
+    <script>
+        try {
+            console.log(a);
+        } catch (error) {
+            console.log("The error is : ",error);
+            // error object property
+            console.log("The error.name is : ",error.name);
+            console.log("The error.message is : ",error.message);
+            console.log("The error.stack is : ",error.stack);
+        }
+    </script>
+</body>
+</html>

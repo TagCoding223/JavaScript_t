@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>addEventListener & removeEventListener</title>
+</head>
+
+<body>
+    <button id="first">click me!!!</button>
+</body>
+<script>
+    let btn = document.getElementById('first')
+    let x = function (e) { // e iis not necessary it just an event object
+        alert("good morning")
+
+        // event object properties
+        console.log(`e is : `,e)
+        console.log(`e.target is : `,e.target)
+        console.log(`e.type is : `,e.type)
+        console.log(`e.currentTarget is : `,e.currentTarget)
+        console.log(`e.clinetX is : `,e.clientX)
+        console.log(`e.clientY is : `,e.clientY)
+        // e cannot access outside event function
+    }
+    let y = function () {
+        alert("good night")
+    }
+
+    // add click event
+    btn.addEventListener('click', x);
+    btn.addEventListener('click', y);
+
+    // remove specific event on base of different cases
+    let a = Number.parseInt(prompt("Enter 1 or 2 "))
+    if (a == 1) {
+        btn.removeEventListener('click', y)
+    } else {
+        btn.removeEventListener('click', x)
+    }
+
+    // it works when function refernce is same if pass complete function then not work because new function() will be created.
+    // below code define this sinerio
+    // btn.removeEventListener('click',function (){
+    //     alert("good night")
+    // })
+
+</script>
+<!-- if you write script outside body then when page load then browser automatically shift this script block inside body (see inside inspect elements) -->
+</html>

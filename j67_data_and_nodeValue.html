@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Data and NodeValue</title>
+</head>
+<body>
+    hello
+    <i>italic</i>
+    <script>
+        console.log(document.body.firstChild);//return object
+        console.log(document.body.firstChild.data);//include space also and return string
+        console.log(document.body.firstChild.nodeValue);//include space also and return string
+
+        // complete body content as a text and remove tags(give body text content as a string)
+        console.log(document.body.textContent);
+    </script>
+</body>
+</html>

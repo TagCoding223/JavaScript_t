@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Audio playing</title>
+</head>
+
+<body>
+    <p id="title">file:///G:/Music/StupidInLove.mp3</p>
+    <audio id="myAudio" onended="playNext()">
+        <source src="file:///G:/Music/StupidInLove.mp3" type="audio/mpeg" >
+    </audio>
+    
+    <br>
+    <br>
+    <button>Play</button>
+    <button>Pause</button>
+    <button>Next</button>
+    <button>Previous</button>
+    <br><br>
+
+    <script>
+        let title=document.getElementById('title')
+        let song=document.getElementById('myAudio')
+        let audio_list=["file:///G:/Music/StupidInLove.mp3","file:///G:/Music/Bandeyaa%20-%20Reprise%20Version%20%EF%BD%9C%20Asees%20Kaur%20%EF%BD%9C%20Jazbaa%20%EF%BD%9C%20Amjad%20Nadeem%20%EF%BD%9C%20Specials%20by%20Zee%20Music%20Co..mp3","file:///G:/Music/Heeriye%20_%20Arijit%20Singh%20_%20Jasleen%20Royal%20_%20Dulquer%20Salmaan%20_%20Aditya%20Sharma%20_%20New%20Song%20(320%20kbps).mp3"]
+        let counter=0
+        song.controls=true
+        let btn=document.getElementsByTagName('button')
+        btn[0].addEventListener('click',()=>{
+            song.play()
+        })
+        btn[1].addEventListener('click',()=>{
+            song.pause()
+        })
+
+        // next song
+        playNext=()=>{
+            song.pause()
+            if(counter==audio_list.length-1){
+                counter=0
+                // console.log("i ",counter);
+            }else{
+                counter=counter+1
+                // console.log("y ",counter);
+            }
+            song.src=audio_list[counter]
+            song.title=audio_list[counter]
+            title.innerText=audio_list[counter]
+            song.play()
+        }
+        btn[2].addEventListener('click',()=>{
+            playNext()
+        })
+        
+
+        // previous song
+        btn[3].addEventListener('click',()=>{
+            song.pause()
+            if(counter==0){
+                counter=audio_list.length-1
+                // console.log("i ",counter);
+            }
+            else{
+                counter=counter-1
+                // console.log("y ",counter);
+            }
+            song.src=audio_list[counter]
+            song.title=audio_list[counter]
+            title.innerText=audio_list[counter]
+            song.play()
+        })
+        // console.log("previous ");
+    </script>
+</body>
+
+</html>

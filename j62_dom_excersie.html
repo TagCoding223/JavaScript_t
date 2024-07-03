@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dom Exceries</title>
+    <style>
+        li{
+            display: inline;
+        }
+    </style>
+</head>
+<body>
+    <nav>
+        <li>Home</li>
+        <li>About</li>
+        <li>Contact</li>
+    </nav>
+    <table>
+        <tr>
+            <td>name</td>
+            <td>class</td>
+            <td>rollno</td>
+        </tr>
+        <tr>
+            <td>name</td>
+            <td>class</td>
+            <td>rollno</td>
+        </tr>
+        <!-- in browser if you see inspect elements you observe tbody include by browser but observe source code tbody not present -->
+    </table>
+    <script>
+        // document.getElementsByTagName('li')[0].style.color='red';
+        document.getElementsByTagName('nav')[0].firstElementChild.style.color='red';
+        document.body.firstElementChild.firstElementChild.style.color='blue';
+
+        // change elements background using foreach loop
+        Array.from(document.getElementsByTagName('li')).forEach((Element)=>{
+            Element.style.background="aqua";
+        })
+        
+        console.log(Math.random());// create random number between 0 and 1 as a decimal value
+        console.log(Math.floor(Math.random()*3));// random from 0 to 2
+
+        let random=Math.floor(Math.random()*3);
+        let cpu=["S","W","G"][random];//in that condition random use as an index , and index base character store in cpu(0->s,1->w,2->g) string[index]
+        console.log(cpu);
+    </script>
+</body>
+</html>

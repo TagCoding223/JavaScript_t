@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .grid-container{
+            display: grid;
+            grid-template-columns: auto auto auto;
+            background: #2196F3;
+            padding: 10px;
+        }
+        .grid-item{
+            background-color: rgba(255, 255, 255, 0.8);
+            border: 1px solid rgba(0, 0, 0, 0.8);
+            padding: 20px;
+            font-size: 30px;
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+    <div class="grid-container">
+        <div class="grid-item"  id="id1">1<span id="sp1">span</span></div>
+        <div class="grid-item"  id="id2">2</div>
+        <div class="grid-item">3</div>
+        <div class="grid-item">4</div>
+        <div class="grid-item">5</div>
+        <div class="grid-item">6</div>
+        <div class="grid-item">7</div>
+        <div class="grid-item">8</div>
+        <div class="grid-item">9</div>
+    </div>
+    <script>
+        let id1=document.getElementById('id1');
+        console.log("id1 has : ",id1);
+        console.log("Element has grid-item class : ",id1.matches(".grid-item"));
+        console.log("Element has grid-conatiner class : ",id1.matches(".grid-container"));
+        console.log("Element has grid class : ",id1.matches(".grid"));
+        console.log("Element has id1 id : ",id1.matches("#id1"));
+
+        // matches() method use to check given class and id present in element or not
+        
+        let sp1=document.getElementById('sp1');
+        console.log("sp1 has : ",sp1);
+        console.log("Element parent has grid-item class : ",sp1.closest('.grid-item'));
+        console.log(sp1.closest('#sp1'));
+        console.log(sp1.closest('.grid-container'));
+
+        // closest() method return complete html element collection from given class and id element near closest.
+
+        // contains() method check given element/node contain inside element
+        console.log("Is id1 contain sp1 inside him : ",id1.contains(sp1));
+        console.log("Is sp1 contain sp1 inside him : ",sp1.contains(sp1));
+        console.log("Is sp1 contain id1 inside him : ",sp1.contains(id1));
+        console.log("Is id1 contain id1 inside him : ",id1.contains(id1));
+    </script>
+</body>
+</html>

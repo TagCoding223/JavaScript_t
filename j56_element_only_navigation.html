@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Element Only Navigation</title>
+</head>
+<body>
+    <div class="container" style="background-color: blanchedalmond;"><h1>Dom intro</h1>
+        <div class="container">
+            <p>hello Guys</p>
+        </div>
+        <table>
+            <tr>
+                <td>name</td>
+                <td>class</td>
+                <td>age</td>
+                <td>address</td>
+            </tr>
+        </table>
+    </div>
+    <script>
+        // Element Only navigation posibile by Element keyword (it's only return if node is an element otherwise return null)
+        let body=document.body;
+        console.log("First Node of the body : ",body.firstChild);
+        console.log("First element node of body : ",body.firstElementChild);// ignore text node and return first valid element node
+        console.log("Last element node of body : ",body.lastElementChild);// ignore text node and return last valid element node
+        console.log("Previous sibling of body : ",body.previousSibling);
+        console.log("Previous Element sibling of body : ",body.previousElementSibling);
+        console.log("Next Element sibling of head : ",document.head.nextElementSibling);
+
+        // change attribute of element
+        body.firstElementChild.style.background="blue";
+
+    </script>
+</body>
+</html>

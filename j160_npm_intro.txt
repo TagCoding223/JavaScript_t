@@ -1,0 +1,6 @@
+npm install -> package .json ke andel jitni dependencies he unhe install kar do.
+you also use yarn in place of npm
+yarn is a package manager just like npm
+if you use npm then just use npm commands , if use yarn then just use yarn commands with projects
+in yarn some commands are changed like 
+npm install / yarn add

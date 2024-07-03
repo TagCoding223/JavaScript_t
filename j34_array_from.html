@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Array-from Example</title>
+</head>
+<body>
+    <div class="coniterner">
+        <h1>JavaScript Array.from Example</h1>
+        <div>
+            <li>a</li>
+            <li>b</li>
+            <li>c</li>
+        </div>
+    </div>
+    <div class="coniterner">
+        <h1>JavaScript Array.from Example</h1>
+        <div>
+            <li>a</li>
+            <li>b</li>
+            <li>c</li>
+        </div>
+    </div>
+    <div class="coniterner">
+        <h1>JavaScript Array.from Example</h1>
+        <div>
+            <li>a</li>
+            <li>b</li>
+            <li>c</li>
+        </div>
+    </div>
+    <script>
+        // HTMLCollection is an object(NON-Primitive datatype)
+        let a=document.getElementsByClassName("coniterner");//return HTMLCollection 
+        console.log(typeof a);// object but not an array
+        console.log(a);//HTMLCollection(2) [div.coniterner, div.coniterner]
+        // a.forEach(element => { // error because for each loop run for array but a is html collection
+        //     console.log(element); // j34_array_from.html:37 Uncaught TypeError: a.forEach is not a function
+        // });
+        let b=Array.from(a);// Array.from() use to convert an object into an array return an array
+        console.log(b);
+        Array.from(a).forEach(element => { // in this line array parmanetly not change in array
+            console.log(element);
+        })
+    </script>
+</body>
+</html>

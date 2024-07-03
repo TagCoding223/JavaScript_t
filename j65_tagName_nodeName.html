@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TagName_nodeName</title>
+</head>
+<body>
+    <span>i am a span</span>
+    <script>
+        // any type of node return by nodeName
+        console.log(document.body.firstChild.nodeName);
+        console.log(document.body.firstElementChild.nodeName);
+        
+        // tagName only return if node is a tag
+        console.log(document.body.firstChild.tagName);
+        console.log(document.body.firstElementChild.tagName);
+
+        // tagName & nodeName return a string
+    </script>
+</body>
+</html>

@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Promise.any() method</title>
+</head>
+<body>
+    <script>
+        let p1=new Promise((resolve,reject)=>{
+            setTimeout(()=>{
+                // resolve("Resolve 1")
+                reject(new Error("Something wrong!"))
+            },6000)
+        })
+
+        let p2=new Promise((resolve,reject)=>{
+            setTimeout(()=>{
+                reject(new Error("Something wrong!"))
+            },2000)
+        })
+
+        let p3=new Promise((resolve,reject)=>{
+            setTimeout(()=>{
+                // resolve("Resolve 3")
+                reject(new Error("Something wrong!"))
+            },3000)
+        })
+
+        let promise_all=Promise.any([p1,p2,p3])
+        promise_all.then((value)=>{
+            console.log("First resolved promise value : ",value);
+        },(err)=>{
+            console.log(err);
+        })
+
+        // it return first resolved value , it ignore first fullfilled promise if it is rejected and return first resolved promise. it return AggregateError if not any promise fullfilled as a resolved promise.
+
+    </script>
+</body>
+</html>

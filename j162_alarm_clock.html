@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Alarm</title>
+</head>
+<!-- all done -->
+<body>
+    <div style="text-align: center; font-size: 3rem;">
+        <span id="cur_hours"></span> : <span id="cur_min"></span> : <span id="cur_sec"></span> <span
+            id="cur_cycle"></span>
+    </div>
+    <div style="text-align: center; margin: 2rem;">
+        <select id="hours">
+            <option value="-1">Hours</option>
+        </select>
+        <select id="min">
+            <option value="-1">Minutes</option>
+        </select>
+        <select id="sec">
+            <option value="-1">Seconds</option>
+        </select>
+        <select id="cycle">
+            <option value="-1">None</option>
+            <option value="AM">AM</option>
+            <option value="PM">PM</option>
+        </select>
+    </div>
+    <div style="text-align: center;">
+        <button onclick="setAlarm()">Set Alarm</button>
+    </div>
+    <p id="message" style="font-size: 2rem;text-align: center;display: none;">Please enter correct time.</p>
+    <p id="ala_set_message" style="font-size: 2rem;text-align: center;display: none;"></p>
+    <div>
+        <button onclick="pauseFun()" id="pause" style="display: none;margin: auto;margin-top: 2rem;">Pause</button>
+    </div>
+
+    <audio id="myAudio">
+        <source src="file:///G:/Music/StupidInLove.mp3" type="audio/mpeg" >
+    </audio>
+    <script>
+        // current time
+        let date
+        let cur_hours
+        let cur_min
+        let cur_sec
+        let format12_hour
+        let ampm
+
+        let cur_hours_id = document.getElementById('cur_hours')
+        let cur_min_id = document.getElementById('cur_min')
+        let cur_sec_id = document.getElementById('cur_sec')
+        let cur_cycle = document.getElementById('cur_cycle')
+
+        let song=document.getElementById('myAudio')
+        let ala_set_message=document.getElementById('ala_set_message')
+
+        let ala_cyc = document.getElementById('cycle')
+        let message = document.getElementById('message')
+        let pause = document.getElementById('pause')
+
+        class Alarm{
+            constructor(time,h,m,s,c){
+                ala_set_message.innerText=`Your alarm set for ${h} : ${m} : ${s} ${c}`
+                ala_set_message.style.display='block'
+                message.style.display='none'
+                setTimeout(()=>{
+                    song.play()
+                    pause.style.display='block'
+                },time)
+                setTimeout(()=>{
+                    song.pause()
+                    pause.style.display='none'
+                },time+10000)
+            }
+        }
+
+        pauseFun=()=>{
+            song.pause()
+            pause.style.display='none'
+        }
+
+        setInterval(() => {
+            date = new Date()
+            cur_hours=date.getHours()
+            cur_min=date.getMinutes()
+            cur_sec=date.getSeconds()
+
+            // cur_hours = 20
+            // cur_min = 30
+            // cur_sec = 30
+
+            ampm = (cur_hours >= 12) ? "PM" : "AM";
+
+            if (cur_hours > 12) {
+                format12_hour = cur_hours - 12
+            }
+            if(cur_hours==0){
+                format12_hour=12
+            }
+
+            cur_hours_id.innerText = format12_hour
+            cur_min_id.innerText = cur_min
+            cur_sec_id.innerText = cur_sec
+            cur_cycle.innerText = ampm
+
+        }, 1000)
+
+        // alarm clock
+
+        // hours options
+        let ala_hours = document.getElementById('hours')
+        let optionElement
+        for (let i = 1; i <= 12; i++) {
+            optionElement = document.createElement('option')
+            optionElement.value = i
+            optionElement.innerText = i
+            ala_hours.appendChild(optionElement)
+        }
+
+        // min options
+        let ala_min = document.getElementById('min')
+        for (let i = 0; i <= 59; i++) {
+            optionElement = document.createElement('option')
+            if (i < 10) {
+                optionElement.value = `0${i.toString()}`
+                optionElement.innerText = `0${i.toString()}`
+            }
+            optionElement.value = i.toString()
+            optionElement.innerText = i.toString()
+            ala_min.appendChild(optionElement)
+        }
+
+        // 60sec -> 0 to 59
+        // sec options
+        let ala_sec = document.getElementById('sec')
+        for (let i = 0; i <= 59; i++) {
+            optionElement = document.createElement('option')
+            optionElement.value = i
+            optionElement.innerText = i
+            ala_min.appendChild(optionElement)
+            ala_sec.appendChild(optionElement)
+        }
+
+        
+
+        let match_hours
+        let match_min
+        let match_sec = ala_sec.value
+        setAlarm = () => {
+            if (ala_hours.value == '-1' || ala_min.value == '-1' || ala_sec.value == '-1' || ala_cyc.value == '-1') {
+                message.style.visibility = 'visible'
+                ala_set_message.style.display='none'
+            } else {
+                if (ala_cyc.value == "PM") {
+
+                    match_hours = (12 + Number.parseInt(ala_hours.value)).toString()
+                    if (match_hours == '24') {
+                        match_hours = '0'
+                    }
+                } else {
+                    match_hours = ala_hours.value
+                }
+                if(ala_cyc.value=="AM"){
+                    if(match_hours=='12'){
+                        match_hours='0'
+                    }
+                }
+
+                if (match_hours.length == 1) {
+                    match_hours = '0' + match_hours
+                }
+
+                match_min = ala_min.value
+                if (match_min.length == 1) {
+                    match_min = '0' + match_min
+                }
+
+                match_sec = ala_sec.value
+                if (match_sec.length == 1) {
+                    match_sec = '0' + match_sec
+                }
+
+                cur_hours=cur_hours.toString()
+                if(cur_hours.length==1){
+                    cur_hours='0'+cur_hours
+                }
+
+                // let time1 = "09:00"; // First time
+                // let time2 = "17:00"; // Second time
+                let time1 = `${cur_hours}:${cur_min}:${cur_sec}`; // First time
+                let time2 = `${match_hours}:${match_min}:${match_sec}`; // Second time
+
+                // Create Date objects using an arbitrary date part (e.g., "2000-01-01") and the specified time
+                let date1 = new Date(`2000-01-01T${time1}Z`);
+                let date2 = new Date(`2000-01-01T${time2}Z`);
+
+                // Handle cases where the times are on opposite sides of midnight
+                if (date2 < date1) {
+                    date2.setDate(date2.getDate() + 1);
+                }
+
+                // Calculate the difference in milliseconds
+                let diff = date2 - date1;
+
+                // Convert milliseconds to hours, minutes, and seconds
+                let ms = diff % 1000;
+                let ss = Math.floor(diff / 1000) % 60;
+                let mm = Math.floor(diff / 1000 / 60) % 60;
+                let hh = Math.floor(diff / 1000 / 60 / 60);
+
+                console.log(`${diff}ms = ${hh}hr, ${mm}min, ${ss}sec, ${ms}ms`);
+
+
+                let alaObj=new Alarm(diff,ala_hours.value,ala_min.value,ala_sec.value,ala_cyc.value)
+            }
+        }
+    </script>
+    
+</body>
+
+</html>

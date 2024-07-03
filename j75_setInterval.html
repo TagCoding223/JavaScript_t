@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>setInterval</title>
+</head>
+
+<body>
+    <h1>setInterval Method</h1>
+    <script>
+        // setInteravel call a function after an interval continously , when clear interval not call
+        let fac;
+        let z = 1;
+
+        function factorial(a, b) {
+            if (a < b) {
+                return a * factorial(++a, b);
+            }
+            return a;
+        }
+
+        const printFactorial = () => {
+            fac = factorial(1, z);
+            alert(`Factorial of ${z} is : ${fac}`);
+            document.body.insertAdjacentHTML("beforeend",`<br><b>Factorial of ${z} is : ${fac}</b>`);
+            z++;
+            if (z == 11) {
+                clearInterval(facInterval);
+            }
+        }
+
+        let facInterval = setInterval(printFactorial, 5000);
+
+        // let facInterval = setInterval(printFactorial, 5000,1,z); this line not run this algorthim as we imagine, because setInterval call the function multiple time but get argument just one time and that was arguments are constants (i mean that setInterval create a object of arguments and each call  pass arguments form these object that's why if update value of z it can't be impacet passing function arguments beacuse that argumnts pass by object)
+        // that senario also work with setTimeout()
+
+    </script>
+</body>
+
+</html>

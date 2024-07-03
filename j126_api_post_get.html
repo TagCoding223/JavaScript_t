@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Post and get with async and await</title>
+</head>
+<body>
+    <script>
+        // this code hold get and pos method both
+        createNews= async (createBody)=>{
+            let options={
+                method : "POST",
+                headers : {
+                    'Content-type' : 'application/json'
+                },
+                body : JSON.stringify(createBody)
+            }
+            let p = await fetch('http://localhost:3000/news',options)
+            let response = await p.text()
+            return response
+        }
+
+        getNews= async (id)=>{
+            let p=await fetch('http://localhost:3000/news/'+id)
+            let response=await p.json()
+            return response
+        }
+
+        mainFun=async ()=>{
+            let newsBoby={
+                title:'new news by v',
+                news_link:"httpmanymany",
+                image_link:"happyhapy",
+                news_host:'gogo'
+            }
+            let news=await createNews(newsBoby)
+            console.log(news);
+            console.log(await getNews(11));
+        }
+        mainFun()
+    </script>
+</body>
+</html>

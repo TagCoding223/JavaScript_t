@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Read Complex Json file</title>
+</head>
+
+<body>
+
+    <script>
+        // this code work with help of server 
+        /* chrome throw error (
+        Access to fetch at 'file:///G:/vscode/JavaScript_t/complex_data.json' from origin 'null' has been blocked by CORS policy: Cross origin requests are only supported for protocol schemes: http, data, isolated-app, chrome-extension, chrome, https, chrome-untrusted.
+    )*/
+        
+        function fetchJSONDATA() {
+            fetch("./complex_data.json").then((res) => {
+                if (!res.ok) {
+                    throw new Error(`HTTP error! Status: ${res.status}`)
+                }
+                return res.json()
+                // return res.arrayBuffer()
+            }).then((data) => {
+                console.log(data)
+                document.write(data+"<br>")
+
+                // complete data convert in string just using in display
+                document.write(JSON.stringify(data)+"<br>")
+                
+                console.log(data.Business);
+                console.log(data.Business[1].title);
+                console.log(data["Business"][1]["title"]);
+                data.Business.forEach(element => {
+                    // console.log(element['source']);
+                    console.log(element.source);
+                });
+            }).catch((error) => console.error("Unable to fetch data:", error))
+        }
+        fetchJSONDATA()
+    </script>
+
+</body>
+
+</html>

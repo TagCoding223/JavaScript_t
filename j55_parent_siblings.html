@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Parents & Siblings in Dom</title>
+</head><body><div class="container"><h1>Dom intro</h1>
+        <div class="container">
+            <p>hello Guys</p>
+        </div>
+        <table>
+            <tr>
+                <td>name</td>
+                <td>class</td>
+                <td>age</td>
+                <td>address</td>
+            </tr>
+        </table>
+    </div>
+    <script>
+        // DOM Property
+        // read only -> element cannot be change , but refernce is changeable
+        // They are live element.chlidNodes variable(reference) will automatically update it childnodes of element is changed.
+        document.body.firstElementChild.firstElementChild.innerText="Parent & Sibling";
+        // they are iterable using for of loop
+        let a=document.body.childNodes;
+        for (const iterator of a) {
+            console.log(iterator);
+        }
+
+        // Sibling
+        // body and head are siblings because there parent are same that is html
+        
+        // body is next and right sibling of head
+        // document.writeln("") // writeIn() method clear page then write
+        console.log("Next & right sibling of head : ",document.head.nextSibling); // if space present between head and body tag then space also consider as a sibling because space is a text node
+        
+        // head is previous and left sibling of body
+        console.log(`previous & left sibling of body : ${document.body.previousSibling}`);
+
+        // previous sibling of table
+        console.log("Previous sibling of table is : ",document.body.firstChild.childNodes[document.body.firstChild.childNodes.length-3].previousSibling); // -3 beacuse table and previous sibling hold a space node between them
+
+        // Parent 
+        // The Parent is avaliable as parentNode
+        // body & head parent is
+        console.log("parent of body is : ",document.body.parentNode);
+        console.log("parent of head is : ",document.head.parentNode);
+
+        a=document.body.firstChild.firstChild.firstChild;
+        console.log("parent of text inside h1 is : ",a.parentNode);//return any type of node
+        
+        // parentElementNode return if parent is a valid html element otherwise return null
+        console.log("parent of text inside h1 is : ",a.parentElement);//return if parent is an element like html head body div etc. 
+        console.log(`parent of document.document is : ${document.parentElement}`)
+    </script>
+</body>
+</html>

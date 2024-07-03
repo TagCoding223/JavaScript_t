@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>User is vaild driver?</title>
+</head>
+<body>
+    <script>
+        let age;
+        let edit=false;
+        let neg_age=false;
+        do{
+            age=prompt("Enter your age");
+            edit=false;
+            neg_age=false;
+            if(age<0){
+                neg_age=confirm("you enter invalid age , can you want to change");
+            }
+            else{
+                edit=confirm("Is you want to change your age");
+            }
+        }while(edit || neg_age);
+
+        if(edit==false && neg_age==false){
+            if(age<15 && age>5){
+                alert("Don't think but drive");
+            }
+            else if(age<5 && age>0){
+                location.href="https://google.com";
+            }
+            else if(age<0){
+                alert("I think your are joking with me");
+            }
+            else if (age<18){
+                alert("Take leasones for driving in driving school");
+            }
+            else if (age==18){
+                alert("Now your age is vaild for drive test");
+            }
+            else if (age>18 && age<70){
+                alert("You're vaild driver");
+            }
+            else if (age>70){
+                alert("You're too older , now you can't drive");
+                document.body.style.background="red";
+                document.write("Driving is dangers for your life !")
+            }
+            else{
+                alert("driving is not a joke")
+            }
+        }
+    </script>
+</body>
+</html>

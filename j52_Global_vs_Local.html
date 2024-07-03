@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Global VS Local</title>
+</head>
+
+<body>
+    <script>
+        a = 10;
+        var b = 20;
+        let c = 30;
+        const d = 50;
+        function go() {
+            let a = 20;
+            let b = 30;
+            let c = 40;
+            let d = 50;
+            console.log("local a : ",a);
+            console.log("global a : ",window.a);
+
+            console.log("local b : ",b);
+            console.log("global b : ",this.b);
+
+            console.log("local c : ",c);
+            console.log("global c : ",window.c);
+
+            console.log("local d : ",d);
+            console.log("global d : ",window.d);
+        }
+        go();
+        console.log(window);
+        // if you open it in console then you see a and b as apropert of window object
+
+        // document & window object available when we use .html file because document & window object is refernce of webpage content
+        // when we create a variable in Js using automatic and var then those variable store as a window object property if variable define in global position
+        // but let and const not store in window object as a property.
+        // window not store global variable
+        // this keyword also point global variable , means this is a referance of window
+        console.log(this);
+    </script>
+</body>
+
+</html>

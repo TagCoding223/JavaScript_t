@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Promise Chaining P2 multiple then()</title>
+</head>
+<body>
+    <em>
+        <b>
+            Number 1 : <input type="number" name="" id="number1"><br><br>
+            Number 2 : <input type="number" name="" id="number2"><br><br>
+            <button type="submit">Submit</button>
+        </b>
+    </em>
+    <script>
+        let number1,number2,promise
+
+        document.getElementsByTagName('button')[0].addEventListener('click',()=>{
+            number1 = Number.parseInt(document.getElementById('number1').value)
+            number2 = Number.parseInt(document.getElementById('number2').value)
+            mainCode()
+        })
+
+        mainCode=()=>{
+            promise=new Promise((resolve,reject)=>{
+                if (number2 == 0) {
+                    reject(new Error("Divide by zero not allowed."))
+                } else {
+                    resolve(`The result of ${number1} / ${number2} is : ${number1 / number2}`)
+                }
+            }).then((result)=>{
+                console.log(result);
+                return new Promise((resolve,reject)=>{
+                    if(number1-number2<0){
+                        reject(new Error(`The result of ${number1} - ${number2} is negative.`))
+                    }else{
+                        resolve(`The result of ${number1} - ${number2} is : ${number1 - number2}`)
+                    }
+                })//.then((value)=>{
+                //     console.log(value," hello")
+                // },(error)=>{
+                //     console.log(error);
+                // }) // if i use this block then this promise value cannot pass to next then
+            }).then((value)=>{
+                console.log(value);
+                console.log("The result of ",number1," + ",number2," is : ",number1 + number2);
+                return true
+                // if we use return inside then() then js automatically convert it into a new promise with any type of value like string , bool , number etc.
+            }).then((value)=>{
+                console.log(value);
+                console.log("The result of ",number1," * ",number2," is : ",number1 * number2);
+            }).catch((error)=>{
+                console.log("I'm always run : ",error);
+            })
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,183 @@
+<!-- This algoritham has many glitch points -->
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Alarm</title>
+</head>
+
+<body>
+    <div style="text-align: center; font-size: 3rem;">
+        <span id="cur_hours"></span> : <span id="cur_min"></span> : <span id="cur_sec"></span> <span
+            id="cur_cycle"></span>
+    </div>
+    <div style="text-align: center; margin: 2rem;">
+        <select id="hours">
+            <option value="-1">Hours</option>
+        </select>
+        <select id="min">
+            <option value="-1">Minutes</option>
+        </select>
+        <select id="sec">
+            <option value="-1">Seconds</option>
+        </select>
+        <select id="cycle">
+            <option value="-1">None</option>
+            <option value="AM">AM</option>
+            <option value="PM">PM</option>
+        </select>
+    </div>
+    <div style="text-align: center;">
+        <button onclick="setAlarm()">Set Alarm</button>
+    </div>
+    <p id="message" style="font-size: 2rem;text-align: center;visibility: hidden;">Please enter correct time.</p>
+    <script>
+        // current time
+        let date
+        let cur_hours
+        let cur_min
+        let cur_sec
+        let format12_hour
+        let ampm
+
+        let cur_hours_id = document.getElementById('cur_hours')
+        let cur_min_id = document.getElementById('cur_min')
+        let cur_sec_id = document.getElementById('cur_sec')
+        let cur_cycle = document.getElementById('cur_cycle')
+
+        setInterval(() => {
+            date = new Date()
+            // cur_hours=date.getHours()
+            // cur_min=date.getMinutes()
+            // cur_sec=date.getSeconds()
+
+            cur_hours = 20
+            cur_min = 30
+            cur_sec = 30
+
+            ampm = (cur_hours >= 12) ? "PM" : "AM";
+
+            if (cur_hours > 12) {
+                format12_hour = cur_hours - 12
+            }
+
+            cur_hours_id.innerText = format12_hour
+            cur_min_id.innerText = cur_min
+            cur_sec_id.innerText = cur_sec
+            cur_cycle.innerText = ampm
+
+        }, 1000)
+
+        // alarm clock
+
+        // hours options
+        let ala_hours = document.getElementById('hours')
+        let optionElement
+        for (let i = 1; i <= 12; i++) {
+            optionElement = document.createElement('option')
+            optionElement.value = i
+            optionElement.innerText = i
+            ala_hours.appendChild(optionElement)
+        }
+
+        // min options
+        let ala_min = document.getElementById('min')
+        for (let i = 0; i <= 59; i++) {
+            optionElement = document.createElement('option')
+            optionElement.value = i
+            optionElement.innerText = i
+            ala_min.appendChild(optionElement)
+        }
+
+        // 60sec -> 0 to 59
+        // sec options
+        let ala_sec = document.getElementById('sec')
+        for (let i = 0; i <= 59; i++) {
+            optionElement = document.createElement('option')
+            optionElement.value = i
+            optionElement.innerText = i
+            ala_min.appendChild(optionElement)
+            ala_sec.appendChild(optionElement)
+        }
+
+        let ala_cyc = document.getElementById('cycle')
+        let message = document.getElementById('message')
+
+        let match_hours
+        let match_min
+        let match_sec = ala_sec.value
+        setAlarm = () => {
+            if (ala_hours.value == '-1' || ala_min.value == '-1' || ala_sec.value == '-1' || ala_cyc.value == '-1') {
+                message.style.visibility = 'visible'
+            } else {
+                if (ala_cyc.value == "PM") {
+                    if (ala_hours.value == '12') {
+                        // console.log(12);
+                        match_hours = 12
+                    } else {
+                        // console.log(12+Number.parseInt(ala_hours.value));
+                        match_hours = 12 + Number.parseInt(ala_hours.value)
+                    }
+                } else {
+                    match_hours = Number.parseInt(ala_hours.value)
+                }
+
+                console.log(`match hours : ${match_hours}`);
+                // get difference between current seconds and alarm seconds
+                let differ_sec = 0
+                let differ_min = 0
+                let differ_hours = 0
+                for (let i = cur_sec + 1; i != ala_sec.value; i++) {
+                    // console.log("i ",i);
+                    differ_sec = differ_sec + 1
+                    if (i == 59) {
+                        i = -1
+                    }
+                }
+                if (differ_sec == 59) {
+                    differ_min = +1
+                    differ_sec = 0
+                }
+                console.log(differ_sec);
+
+                // get difference between current mintues and alarm minutes
+                for (let i = cur_min + 1; i != ala_min.value; i++) {
+                    differ_min = differ_min + 1
+                    if (i == 59) {
+                        i = -1
+                    }
+                }
+                console.log("min: ", differ_min);
+
+                // get difference between current hours and alarm hours
+
+                if (differ_min == 59) {
+                    differ_hours += 1
+                    differ_min = 0
+                }
+                
+
+                for (let i = cur_hours + 1 ; i != match_hours; i++) {
+                    if (cur_hours == match_hours) {
+                        if (cur_min < ala_min.value) {
+                            break;
+                        }
+                    }
+                    differ_hours = differ_hours + 1
+                    if (i == 24) {
+                        i = 0
+                    }
+                }
+                console.log("hour : ", differ_hours);
+                console.log(`Alram time is : ${differ_hours} : ${differ_min} : ${differ_sec}`);
+            }
+        }
+
+        // that code has 1sec glitch
+    </script>
+</body>
+
+</html>

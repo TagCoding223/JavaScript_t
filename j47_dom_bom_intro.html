@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dom & Bom intro</title>
+</head>
+<body>
+    <pre>
+    <em>
+        BOM -> Browser Object Modal
+        DOM -> Document Object Modal
+        <button type="button" onclick="jump()">Google</button>
+    </em>
+    </pre>
+    <script>
+        console.log(window);
+        // window is a global object
+        
+            //         window
+            //         | | |
+            //  BOM <--| | |--> js core
+            //           |
+            //          DOM
+        
+
+        // DOM -> everything in document
+        // that mean we also say that
+        window.console.log("hello");
+
+        // document -> everything in your webpage convert into an object
+        console.log(document);
+        console.log(document.body);
+        document.body.style.background="pink";
+
+        // BOM -> everything about browser
+        // the function alert/confirm and prompt are also a part of the BOM.
+        function jump(){
+            // location.href("https://www.google.com"); deplecated
+            window.location="https://www.google.com";
+        }
+    </script>
+</body>
+</html>

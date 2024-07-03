@@ -1,0 +1,23 @@
+<!-- stop reload when use submit button     -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Prevent Default</title>
+</head>
+<body>
+    <form action="./j142_preventDefault.html" method="get">
+        <input type="text" value="vishal" name="name">
+        <button type="submit">submit</button>
+    </form>
+    <script>
+        let btn=document.getElementsByTagName('button')[0]
+        btn.addEventListener('click',(e)=>{
+            e.preventDefault() // its use to change default naturl , if you comment it then each time you press submit button page will be reloaded and you can't see below line output
+            // in simple world it stop to reload aa page
+            console.log(e);
+        })
+    </script>
+</body>
+</html>

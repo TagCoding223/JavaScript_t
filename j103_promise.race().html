@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Promise.race() method</title>
+</head>
+<body>
+    <script>
+        let p1=new Promise((resolve,reject)=>{
+            setTimeout(()=>{
+                resolve("Resolve 1")
+            },13000)
+        })
+
+        let p2=new Promise((resolve,reject)=>{
+            setTimeout(()=>{
+                reject(new Error("Something wrong!"))
+            },4000)
+        })
+
+        let p3=new Promise((resolve,reject)=>{
+            setTimeout(()=>{
+                resolve("Resolve 3")
+            },12000)
+        })
+
+        let promise_all=Promise.race([p1,p2,p3])
+        promise_all.then((value)=>{
+            console.log("The first fullfilled promise with value.");
+            console.log(value);
+        })
+        promise_all.catch((err)=>{
+            console.log("The first fullfilled promise with error.");
+            console.log(err);
+        })
+
+        // it return a new promise with value/reason of first fullfilled promise (resolve/reject).
+        // it return first promise that fullfilled as a resolve/reject.
+    </script>
+</body>
+</html>

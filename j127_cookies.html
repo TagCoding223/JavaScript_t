@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cookies in Js</title>
+</head>
+<body>
+    <script>
+        // this file content work on those site they alreeady have cookies(can't use without any server , i use youtube music site they already loaded into my browser crache) first i visit youtube then perfrom this methods on console one by one
+        console.log(document.cookie)// show all cookies in form of key value paire
+
+        // add a new cookie
+        document.cookie="name=vishal"
+        console.log(document.cookie);
+        
+        // update a cookie
+        document.cookie="name=kumkum"
+        console.log(document.cookie);
+
+        // create cookie with special keyword
+        document.cookie=encodeURIComponent("username:kumkum@123&") 
+        // its convert it into -> 'username%3Akumkum%40123%26'
+        console.log(document.cookie);
+
+        // decode special symbols
+        console.log(decodeURIComponent(document.cookie))
+
+        // options on cookies 
+        // path -> this option define which page url has access to use this cookie and avaliable url
+        document.cookie="user=vishal;path=/index/category"
+
+        document.cookie="user=vishal;expire= Sun , 16 June 2024 09:02:00 GMT"
+
+        // Browser send cookie on each request of each site
+        // Note : The name=value pair,after encodeURIComponent,should not bigger than 4kb
+        // Total no of cookies for domain is limited to around 20+(Exact number is browser depended.)
+    </script>
+</body>
+</html>

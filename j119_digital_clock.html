@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Digital Clock</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        .container {
+            width: 100vw;
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        p {
+            display: grid;
+            width: auto;
+            height: auto;
+            background: pink;
+            text-align: center;
+            justify-content: center;
+            align-content: space-around;
+        }
+
+        .design {
+            width: 200px;
+            height: 200px;
+            background: yellow;
+            margin: 5px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 12vw;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <p><span class="design" id="hour"></span><span class="design" id="min"></span><span class="design"
+                id="sec"></span></p>
+    </div>
+    <script>
+        let hour = document.getElementById('hour')
+        let min = document.getElementById('min')
+        let sec = document.getElementById('sec')
+        let date
+        setInterval(() => {
+            date = new Date()
+            hour.innerText = date.getHours()
+            min.innerText = date.getMinutes()
+            sec.innerText = date.getSeconds()
+        }, 1000)
+    </script>
+</body>
+
+</html>

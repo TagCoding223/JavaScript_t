@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Friend fun</title>
+</head>
+
+<body style="background: black;">
+    <script>
+        // js object
+        let pass_obj = {
+            1: "Initializing Hacking Program.....",
+            2: "Hacking Vaishnavi username.....",
+            3: "Username found vaishnavi@001....",
+            4: "Connecting to facebook....",
+            5: "Sensitive infomation compteley fetched...."
+        }
+
+        run = async (key) => {
+            return new Promise((resolve,reject)=>{
+                setTimeout(() => {
+                    resolve(pass_obj[key])
+                }, 3000)
+            })
+        }
+
+        printFun=(content)=>{
+            let p=document.createElement('p')
+            p.innerText=content
+            p.style.color='white'
+            document.body.appendChild(p)
+        }
+        mainFun=async()=>{
+            // let p1=await run(1)
+            // printFun(p1)
+            // let p2=await run(2)
+            // printFun(p2);
+
+            // Object.Keys() return an array with all objects property names
+            const obj_length=Object.keys(pass_obj).length
+
+            for(let i=1;i<=obj_length;i++){
+                let p= await run(i)
+                printFun(p)
+            }
+        }
+        mainFun()
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Notes using localStorage</title>
+</head>
+
+<body>
+    Title : <input type="text" name="title">
+    Description : <input type="text" name="desc">
+    <button onclick="save()">Create Note</button>
+    <script>
+        console.log(localStorage);
+        
+        // create paragraph tag
+        createP = (title, desc) => {
+            let p = document.createElement('p')
+            p.innerHTML = `Title : ${title}, Description : ${desc}   `;
+            return p
+        }
+
+        // delete btn
+        createDelBtn = (title) => {
+            let delBTN = document.createElement('button')
+            delBTN.innerText = "Delete"
+            delBTN.style.marginLeft='10px'
+            delBTN.style.marginRight='10px'
+            delBTN.setAttribute('onclick', `delNOTE('${title}')`)
+            return delBTN
+        }
+
+        // update btn
+        createUpdBtn = (title) => {
+            let updBTN = document.createElement('button')
+            updBTN.innerText = "Update"
+            updBTN.setAttribute('onclick', `updNOTE('${title}')`)
+            return updBTN
+        }
+
+        // delete note button function
+        delNOTE=(title)=>{
+            if(confirm("Are you sure ?")){
+                localStorage.removeItem(title)
+                location.reload()
+            }
+        }
+
+        // update note button function
+        updNOTE=(title)=>{
+            let desc=prompt("Enter new description")
+            if(confirm("Are you sure ?")){
+                localStorage.setItem(title,desc)
+                location.reload()
+            }
+        }
+
+        // create new note
+        save = () => {
+            let title = document.getElementsByName('title')[0].value
+            let desc = document.getElementsByName('desc')[0].value
+            localStorage.setItem(title, desc)
+
+            // p tag
+            let p = createP(title, desc)
+            document.body.appendChild(p)
+
+            // delete button
+            p.appendChild(createDelBtn(title))
+
+            // update button
+            p.appendChild(createUpdBtn(title))
+        }
+
+        refershElement = () => {
+            let title, desc
+            for (let i = 0; i < localStorage.length; i++) {
+                title = localStorage.key(i)
+                desc = localStorage.getItem(title)
+
+                // p tag
+                let p = createP(title, desc)
+                document.body.appendChild(p)
+
+                // delete button
+                p.appendChild(createDelBtn(title))
+
+                // update button
+                p.appendChild(createUpdBtn(title))
+                
+                console.log(`key : ${title},value : ${desc}`);
+            }
+        }
+        refershElement()
+    </script>
+</body>
+</html>

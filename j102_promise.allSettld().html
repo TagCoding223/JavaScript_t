@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Promise.allSettled() method</title>
+</head>
+<body>
+    <script>
+        let p1=new Promise((resolve,reject)=>{
+            setTimeout(()=>{
+                resolve("Resolve 1")
+            },3000)
+        })
+
+        let p2=new Promise((resolve,reject)=>{
+            setTimeout(()=>{
+                reject(new Error("Something wrong!"))
+            },4000)
+        })
+
+        let p3=new Promise((resolve,reject)=>{
+            setTimeout(()=>{
+                resolve("Resolve 3")
+            },2000)
+        })
+
+        let promise_all=Promise.allSettled([p1,p2,p3])
+        promise_all.then((value)=>{
+            console.log("All promise are fullfilled.");
+            console.log(value);
+        })
+
+        // it return a new promise with value/reason that is promise status and value/reason of given promises untill all promises are fullfilled.
+    </script>
+</body>
+</html>
